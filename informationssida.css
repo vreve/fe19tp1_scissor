@@ -1,22 +1,21 @@
 
 
-.rutan {
+#rutan {
     display: flex;
     justify-content: center;
     margin-top: 10%;
 }
 
-.alert {
+#alert {
     padding: 20px;
     background-color: lightgray;
     color: black;
     width: 50%;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
   }
   
-  .closebtn {
+  .closeBtn {
     margin-left: 15px;
     color: black;
     font-weight: bold;
@@ -28,7 +27,7 @@
     align-self: flex-end;
   }
   
-  .closebtn:hover {
+  .closeBtn:hover {
     color: black;
     
   }
