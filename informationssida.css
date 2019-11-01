@@ -1,1 +1,34 @@
 
+
+.rutan {
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.alert {
+    padding: 20px;
+    background-color: lightgray;
+    color: black;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: flex-end;
+  }
+  
+  .closebtn:hover {
+    color: black;
+    
+  }
