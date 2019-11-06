@@ -1,19 +1,28 @@
 
-
-#rutan {
-    display: flex;
-    justify-content: center;
-    margin-top: 10%;
+.hidden{
+   visibility: hidden;
+    
 }
-
-#alert {
+.nohidden{
+  visibility: visible;
+ display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    position: absolute;
+   
+   height: 500px;
+   width: 500px;
+   z-index: 99;
+}
+    #alert {
     padding: 20px;
     background-color: lightgray;
     color: black;
     width: 50%;
     display: flex;
     flex-direction: column;
-  }
+}
+  
   
   .closeBtn {
     margin-left: 15px;
