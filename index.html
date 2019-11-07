@@ -11,26 +11,36 @@
     <title>Quire</title>
 </head>
 <body>
+ <div id='popUp' class='popUpHide'>
+    <div id='alert'>
+        <span class='closeBtn' onclick='this.parentElement.style.display="none";'>&times;</span>
+        <strong>Välkommen till Quire!</strong>
+        I denna anteckningsbok kan du skriva och spara dina anteckningar.
+        Du kan även favoritmarkera anteckningar för att lättare hitta dem.
+        Om du vill kan du även styla och skriva ut dina anteckningar.
+    </div>
+    </div>
+
     <h1>Navigation</h1>
 
-    <div class="navbar">
-        <a href="#" class="navbar_">
-            <span class="material-icons">note_add</span>Ny Anteckning
+    <div class='navbar'>
+        <a href='#' class='navbar_'>
+            <span class='material-icons'>note_add</span>Ny Anteckning
         </a>
-        <a href="#" class="navbar_">
-            <span class="material-icons">search</span>Sök
+        <a href='#' class='navbar_'>
+            <span class='material-icons'>search</span>Sök
         </a>
-        <a href="#" class="navbar_">
-            <span class="material-icons">favorite</span>Favorit
+        <a href='#' class='navbar_'>
+            <span class='material-icons'>favorite</span>Favorit
         </a>
-        <a href="#" class="navbar_">
-            <span class="material-icons">build</span>Inställningar
+        <a href='#' class='navbar_'>
+            <span class='material-icons'>build</span>Inställningar
         </a>
     </div>
 
-    <div id="editor-container">
+    <div id='editor-container'>
     </div>
-    <script src="app.js"></script>
+    <script src='app.js'></script>
     
 
 
