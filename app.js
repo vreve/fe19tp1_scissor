@@ -10,10 +10,10 @@
 
 //   var cat = localStorage.getItem('30');/*  */
 
-window.addEventListener('DOMContentLoaded', myFunction);
+window.addEventListener('DOMContentLoaded', popUpLoad);
 
 
-function myFunction() {
+function popUpLoad() {
 
     if (!localStorage.getItem('savePopUp')) {
         document.getElementById('popUp').classList.toggle('showPopUp');
