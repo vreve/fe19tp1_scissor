@@ -1,1 +1,38 @@
+.navbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100%;
+    background: #009879;
+    border-right: 2px solid #008C71;
+    box-shadow: 0 0 10px 5px rgba(0, 0 ,0 ,0.25);
+    float: left;
+}
 
+.navbar_ {
+display: flex;
+align-items: center;
+background: #008C71;
+color: #ffffff;
+padding: 12px;
+text-decoration: none;
+font-weight: bold;
+font-size: 0.85rem;
+border-bottom: 1px solid #009879;
+
+}
+
+#editor-container {
+
+    width: 50%;
+    height: 100%;
+    float: right;
+    
+  }
+
+.ql-toolbar.ql-snow {
+    height: 50%;
+    width: 50%;
+    float: right;
+}
