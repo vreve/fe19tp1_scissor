@@ -14,12 +14,11 @@ window.addEventListener('DOMContentLoaded', myFunction);
 
 
 function myFunction() {
-    //console.log("yo");
 
-    if (!localStorage.getItem("alertdisplayed")) {
-        document.getElementById("myDiv").classList.toggle("nohidden");
+    if (!localStorage.getItem('savePopUp')) {
+        document.getElementById('popUp').classList.toggle('showPopUp');
         //localStorage["alertdisplayed"] = true
-        localStorage.setItem('alertdisplayed', true);
+        localStorage.setItem('savePopUp', true);
     }
 }
 

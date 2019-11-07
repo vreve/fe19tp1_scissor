@@ -1,42 +1,35 @@
 
-.hidden{
-   visibility: hidden;
-    
+.popUpHide{
+  visibility: hidden;  
 }
-.nohidden{
+
+.showPopUp{
   visibility: visible;
- display: flex;
-    justify-content: center;
-    margin-top: 2%;
-    position: absolute;
-   
-   height: 500px;
-   width: 500px;
-   z-index: 99;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  height: auto;
+  width: 100%;
+  position: absolute;
 }
-    #alert {
-    padding: 20px;
-    background-color: lightgray;
-    color: black;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
+
+#alert {
+  padding: 20px;
+  background-color: lightgray;
+  color: black;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
   
-  
-  .closeBtn {
-    margin-left: 15px;
-    color: black;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    align-self: flex-end;
-  }
-  
-  .closeBtn:hover {
-    color: black;
-    
+.closeBtn {
+  margin-left: 15px;
+  color: black;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: flex-end;
   }
