@@ -1,17 +1,5 @@
 
-// let user = document.getElementById(infoText);
-
-// function changeColor(newColor) {
-//     var elem = document.getElementById('infoText');
-//     elem.style.color = newColor;
-//   }
-
-//   localStorage.setItem('age', "30");
-
-//   var cat = localStorage.getItem('30');/*  */
-
 window.addEventListener('DOMContentLoaded', popUpLoad);
-
 
 function popUpLoad() {
 
@@ -21,8 +9,16 @@ function popUpLoad() {
         localStorage.setItem('savePopUp', true);
     }
 }
-
-
+/*
+function removePopUpOnHide() {
+  if (localStorage.getItem('savePopUp', true)) {
+    document.setElementById('popUpNone'); 
+  } else {
+    document.getElementById('popUp').classList.toggle('showPopUp');
+    }
+  }
+  */
+ 
 var Delta = Quill.import('delta');
 var quill = new Quill('#editor-container', {
     modules: {
@@ -63,3 +59,58 @@ window.onbeforeunload = function() {
 
 
 
+
+
+
+
+
+const form = {}
+form.noteText = document.querySelector('#editor-container');
+form.addButton = document.querySelector('#formAddButton');
+form.color = document.querySelector('#formColor');
+
+const notes = document.querySelector('#notes');
+
+form.noteText.focus();
+
+// Functions
+function addNote() {
+  let text = form.value;
+  let note = document.createElement('div');
+  let deleteButton = document.createElement('span');
+
+  note.classList.add('note');
+  note.classList.add(form.color.value);
+  note.innerHTML = `<div id="#editor-container>${text}</div>`;
+  deleteButton.classList.add('note-delete');
+  deleteButton.innerHTML = '&times;';
+
+  note.appendChild(deleteButton);  
+  notes.appendChild(note);
+
+  form.noteText.value = '';
+  form.noteText.focus();
+
+  addListenerDeleteButton(deleteButton);
+}
+
+function addListenerDeleteButton(deleteButton) {
+  deleteButton.addEventListener('click', function (e) {
+    e.stopPropagation();      
+    deleteNote(e);
+  });
+}
+
+function deleteNote(e) {
+  let eventNote = e.target.parentNode;
+  eventNote.parentNode.removeChild(eventNote);
+}
+
+
+// Event Listeners
+form.addButton.addEventListener('click', function (e) {
+  e.preventDefault();  
+  if (form.value != '') {
+    addNote();
+  }
+})
