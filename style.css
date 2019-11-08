@@ -1,19 +1,27 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 .navbar {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 200px;
-    height: 100%;
+    /* position: relative; */
+    /* top: 0; */
+    /* left: 0; */
+    /* width: 200px; */
+    /* height: 100%; */
+    /* float: left; */
+    display: flex;
     background: #009879;
     border-right: 2px solid #008C71;
     box-shadow: 0 0 10px 5px rgba(0, 0 ,0 ,0.25);
-    float: left;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 30px;
 }
-
 .navbar_ {
 display: flex;
 align-items: center;
-background: #008C71;
+/* background: #008C71; */
 color: #ffffff;
 padding: 12px;
 text-decoration: none;
