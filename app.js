@@ -62,6 +62,7 @@ form.noteText = document.querySelector('#editor-container');
 form.addButton = document.querySelector('#formAddButton');
 form.color = document.querySelector('#formColor');
 
+
 form.color.addEventListener('input', function (e) {
   console.log(e.target.value);
 })
@@ -74,11 +75,12 @@ function saveNotes () {
   localStorage.setItem('notes', JSON.stringify(noteList));
 }
 
+
 function addNote() {
   let note = {
     id: Date.now(),
     content: quill.getContents(),
-    title: quill.getText(0, 20),
+    title: quill.getText(0, 20,),
     favourite: false,
     color: form.color.value
   }
@@ -89,8 +91,12 @@ function addNote() {
   
   noteList.push(note);
   saveNotes();
-
 }
+
+
+
+
+
 function selectNote(noteID) {
   console.log("id: " + noteID)
   // hitta en note i noteList vars ID stämmer överrens med argumentet id.
@@ -110,7 +116,7 @@ function renderDiv(note) {
     myDiv.classList.add(note.color);
     myDiv.id = note.id;
     
-    myDiv.innerHTML = `${note.title} ${new Date(note.id).toLocaleTimeString()}`
+    myDiv.innerHTML = `${note.title} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
     myDiv.addEventListener("click", () => selectNote(note.id));
 
     deleteButton.classList.add('note-delete');
@@ -140,8 +146,7 @@ function renderDiv(note) {
 
   saveNotes();
     let eventNote = e.target.parentNode;
-    eventNote.parentNode.removeChild(eventNote);
-    
+    eventNote.parentNode.removeChild(eventNote); 
   }
 
 
@@ -157,7 +162,6 @@ function renderNoteList() {
     noteList.forEach(note => {
     renderDiv(note);
   })
-
 }
 
 // Event Listeners

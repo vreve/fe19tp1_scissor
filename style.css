@@ -1,7 +1,50 @@
+/*POPUP*/
+.popUpHide{
+  display: none;
+  position: absolute;
+  z-index: 1000;
+}
+
+.showPopUp{
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  height: auto;
+  width: 100%;
+  /*position: absolute;*/
+  z-index: 1000;
+}
+
+#forBtn {
+  padding: 20px;
+  background-color: lightgray;
+  color: black;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+  
+.closeBtn {
+  margin-left: 15px;
+  color: black;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: flex-end;
+}
+
 body {
   display: flex;
   flex-direction: column;
   flex-wrap:wrap;
+}
+
+h1{
+  text-align: center;
 }
 
 .navbar {
@@ -21,7 +64,7 @@ body {
     margin-top: 2%;
 }
 
-.navbar_ {
+.navBtn {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
@@ -30,61 +73,31 @@ body {
     padding: 12px;
     text-decoration: none;
     font-size: 1rem;
-    border-bottom: 1px solid #009879;
+}
+
+.navBtn:hover {
+  color: #333;
+  background: #f5f5f5;
+  cursor: pointer;
+  border-radius: 3%;
+}
+
+.ql-toolbar.ql-snow {
+  height: 100%;
+  width: 100%;
+  background: white;   
 }
 
 #editor-container {
     width: 100%;
-    height: 100%;
+    height: 80px;
     background: white;
     display: flex;
     align-items: center;   
   }
 
-.ql-toolbar.ql-snow {
-    height: 100%;
-    width: 100%;
-    background: white;   
-}
 
-/*POPUP*/
-.popUpHide{
-    display: none;
-    position: absolute;
-    z-index: 1000;
-  }
 
-  .showPopUp{
-    visibility: visible;
-    display: flex;
-    justify-content: center;
-    margin-top: 2%;
-    height: auto;
-    width: 100%;
-    /*position: absolute;*/
-    z-index: 1000;
-  }
-  
-  #forBtn {
-    padding: 20px;
-    background-color: lightgray;
-    color: black;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-  }
-    
-  .closeBtn {
-    margin-left: 15px;
-    color: black;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    align-self: flex-end;
-  }
 
 
 
@@ -129,6 +142,7 @@ form select {
   border: 1px solid #520099;
 }
 
+
 form select, 
 form button {
   display: inline-block;
@@ -162,7 +176,7 @@ form button {
 
 .note {
   width: 24rem;
-  height: 20rem;
+  height: 5rem;
   font-size: 1.4rem;
   background: #fff;
   border-radius: 0.4rem;
@@ -216,6 +230,7 @@ form button {
   color: #333;
   background: #f5f5f5;
   cursor: pointer;
+  border-radius: 3%;
 }
 
   
