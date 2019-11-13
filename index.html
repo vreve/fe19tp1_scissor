@@ -11,7 +11,6 @@
     <title>Quire</title>
 </head>
 <body>
-    <h1>Welcome to Quire</h1>
     
     <div id='popUp' id ='alert' class='popUpHide'>
         <div id='forBtn'>
@@ -23,25 +22,24 @@
     </div>
     </div>
 
+    
     <div class='navbar'>
         <a href='#' class='navBtn' id='newNote'>
-            <span class='material-icons'>note_add</span>Ny Anteckning
+            <span class='material-icons'>note_add</span>
         </a>
         <a href='#' class='navBtn'>
-            <span class='material-icons'>search</span>Sök
+            <span class='material-icons'>search</span>
+        </a>
+        <a href='#' class='navBtn' id='favorite'>
+            <span class='material-icons'>favorite</span>
         </a>
         <a href='#' class='navBtn'>
-            <span class='material-icons'>favorite</span>Favorit
-        </a>
-        
-        <a href='#' class='navBtn'>
-            <span class='material-icons'>build</span>Inställningar
-        </a>
+        <span class='material-icons'>build</span>
+    </a>
     </div>
 
-    <div id='editor-container'></div>
-
-    <form>
+    <div id='box'>
+     <form id='form'>
         <!-- <textarea name='formNoteText' id='formNoteText' cols='50' rows='8' maxlength='300'></textarea> -->
         <select name='formColor' id='formColor'>
           <option value='none'>Select color</option>
@@ -50,10 +48,16 @@
           <option value='blue'>Blue</option>
           <option value='yellow'>Yellow</option>
         </select>
-        <button id='formAddButton'>Add note</button>
-      </form>
-    
-      <div id='notes'></div>
+        <button id='formAddButton'>Save</button>
+        <div id='notes'></div> 
+    </form>
+</div>
+
+<div id='test'>
+        <div id='editor-container'></div>  
+    </div>
+</div>
+
     <script src='app.js'></script>
 </body>
 </html>

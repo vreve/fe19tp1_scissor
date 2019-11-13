@@ -56,25 +56,28 @@ window.onbeforeunload = function () {
 }
 
 
+const navbar = {}
+  navbar.newNote = document.querySelector('#newNote');
+  navbar.favorite = document.querySelector('#favorite');
 
 const form = {}
-form.noteText = document.querySelector('#editor-container');
-form.addButton = document.querySelector('#formAddButton');
-form.color = document.querySelector('#formColor');
-
-
+  form.editnote = document.querySelector('#editor-container');
+  form.saveBtn = document.querySelector('#formAddButton');
+  form.color = document.querySelector('#formColor');
+  
 form.color.addEventListener('input', function (e) {
   console.log(e.target.value);
 })
 
 const notes = document.querySelector('#notes');
+  form.editnote.focus();
 
-form.noteText.focus();
+/*FUNKTIONER*/
 
 function saveNotes () {
   localStorage.setItem('notes', JSON.stringify(noteList));
+  
 }
-
 
 function addNote() {
   let note = {
@@ -87,15 +90,9 @@ function addNote() {
 
   if (!noteList) {
     noteList = [];
-  }
-  
-  noteList.push(note);
-  saveNotes();
+  } noteList.push(note);
+    saveNotes();
 }
-
-
-
-
 
 function selectNote(noteID) {
   console.log("id: " + noteID)
@@ -105,7 +102,6 @@ function selectNote(noteID) {
   quill.setContents(note.content);
   form.color.value = note.color;
 }
-
 
 function renderDiv(note) {
     let noteDivs = document.querySelector("#notes");
@@ -125,11 +121,35 @@ function renderDiv(note) {
     noteDivs.appendChild(myDiv);
     myDiv.appendChild(deleteButton);
     
-    form.noteText.value = "";
-    form.noteText.focus();
+    form.editnote.value === "";
+    form.editnote.focus();
 
     addListenerDeleteButton(deleteButton);
   }
+
+
+  /*
+  const showDeleted = (note) => note.deleted === true;
+  const showFavorites = (note) => note.favorite === true;
+
+ 
+  function filterNotes(func = () => true) {
+  //console.log(func(1));
+    let filtered = noteList.filter(func)
+    return filtered;
+  }
+  
+  function showOnlyFavs() {
+    let notes = document.querySelector('#notes');
+    notes.innerHTML = "";
+  
+    let onlyFavs = filterNotes(showDeleted);
+    onlyFavs.forEach(function (note) {
+        renderNotelist();
+    });
+    */
+
+
 
 
   function addListenerDeleteButton(deleteButton) {
@@ -139,18 +159,17 @@ function renderDiv(note) {
     });
   }
   
-
   function deleteNote(e) {
     let noteID = e.target.parentNode.id
     noteList = noteList.filter(note => note.id !== Number(noteID)); 
 
-  saveNotes();
+     saveNotes();
     let eventNote = e.target.parentNode;
     eventNote.parentNode.removeChild(eventNote); 
   }
 
 
-function renderNoteList() {
+  function renderNoteList() {
     document.querySelector("#notes").innerHTML = "";
     noteList = JSON.parse(localStorage.getItem('notes'));
     console.log(noteList)
@@ -164,11 +183,19 @@ function renderNoteList() {
   })
 }
 
+
+
 // Event Listeners
-form.addButton.addEventListener('click', function (e) {
+  navbar.newNote.addEventListener('click', function (e) {
   e.preventDefault();
-  if (form.value != "") {
     addNote();
     renderNoteList();
-  }
+
 })
+/*
+navbar.favorite.addEventListener('click', function () {
+})
+
+navbar.newNote.addEventListener('click', function () {
+})
+*/
