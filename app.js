@@ -207,9 +207,12 @@ document.querySelector('#formAddButton').addEventListener('click', function (e) 
   e.preventDefault();
   // utgå ifrån att selectedNote innehåller noten som för tillfället ändras
   // titta på hur addnote ser ut
+
   // ändra selectedNote så att innehållet från editorn i nuläget hamnar i selectedNote, glöm inte title!
   // när detta funkar (verifiera med en console.log(selectedNote))
   // anropa saveNotes()
+
+  
 
 })
 /*
