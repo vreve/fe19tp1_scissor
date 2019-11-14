@@ -1,12 +1,19 @@
 var noteList = [];
 var selectedNote = {};
 
+/* reminder object från array påverkar arrayen
+noteList [{},{},{}]
+let note = noteList[0]
+note.favourite = true
+noteList[0].favourite = true
+*/
+
 window.addEventListener('DOMContentLoaded', popUpLoad);
-  function closePopUp() {
-    let popup = document.querySelector("#popUp")
-    popup.style.display = "none"
-    localStorage.setItem('savePopUp', true);
-  }
+function closePopUp() {
+  let popup = document.querySelector("#popUp")
+  popup.style.display = "none"
+  localStorage.setItem('savePopUp', true);
+}
 
 function popUpLoad() {
   if (!localStorage.getItem('savePopUp')) {
@@ -15,6 +22,7 @@ function popUpLoad() {
     //localStorage.setItem('savePopUp', true);
   }
   renderNoteList();
+  quill.focus();
 }
 
 var Delta = Quill.import('delta');
@@ -57,139 +65,151 @@ window.onbeforeunload = function () {
 
 
 const navbar = {}
-  navbar.newNote = document.querySelector('#newNote');
-  navbar.favorite = document.querySelector('#favorite');
+navbar.newNote = document.querySelector('#newNote');
+navbar.favorite = document.querySelector('#favorite');
 
 const form = {}
-  form.editnote = document.querySelector('#editor-container');
-  form.saveBtn = document.querySelector('#formAddButton');
-  form.color = document.querySelector('#formColor');
-  
+form.editnote = document.querySelector('#editor-container');
+form.saveBtn = document.querySelector('#formAddButton');
+form.color = document.querySelector('#formColor');
+
 form.color.addEventListener('input', function (e) {
   console.log(e.target.value);
 })
 
 const notes = document.querySelector('#notes');
-  form.editnote.focus();
+form.editnote.focus();
 
 /*FUNKTIONER*/
 
-function saveNotes () {
+function saveNotes() {
   localStorage.setItem('notes', JSON.stringify(noteList));
-  
+
 }
 
 function addNote() {
   let note = {
     id: Date.now(),
     content: quill.getContents(),
-    title: quill.getText(0, 20,),
+    title: quill.getText(0, 20),
     favourite: false,
     color: form.color.value
   }
 
   if (!noteList) {
     noteList = [];
-  } noteList.push(note);
-    saveNotes();
+  }
+  noteList.unshift(note);
+  saveNotes();
+  quill.setText('');
 }
 
 function selectNote(noteID) {
   console.log("id: " + noteID)
   // hitta en note i noteList vars ID stämmer överrens med argumentet id.
   // setcontents note.content
-  let note = noteList.find(note => note.id === noteID)
-  quill.setContents(note.content);
-  form.color.value = note.color;
+  selectedNote = noteList.find(note => note.id === noteID)
+  quill.setContents(selectedNote.content);
+  form.color.value = selectedNote.color;
 }
 
 function renderDiv(note) {
-    let noteDivs = document.querySelector("#notes");
-    let myDiv = document.createElement('div');
-    let deleteButton = document.createElement('span');
-    
-    myDiv.classList.add('note');
-    myDiv.classList.add(note.color);
-    myDiv.id = note.id;
-    
-    myDiv.innerHTML = `${note.title} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'})}`
-    myDiv.addEventListener("click", () => selectNote(note.id));
+  let noteDivs = document.querySelector("#notes");
+  let myDiv = document.createElement('div');
+  let deleteButton = document.createElement('span');
 
-    deleteButton.classList.add('note-delete');
-    deleteButton.innerHTML = '&times;';
+  myDiv.classList.add('note');
+  myDiv.classList.add(note.color);
+  myDiv.id = note.id;
 
-    noteDivs.appendChild(myDiv);
-    myDiv.appendChild(deleteButton);
-    
-    form.editnote.value === "";
-    form.editnote.focus();
+  myDiv.innerHTML = `${note.title} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+  myDiv.addEventListener("click", () => selectNote(note.id));
 
-    addListenerDeleteButton(deleteButton);
-  }
+  deleteButton.classList.add('note-delete');
+  deleteButton.innerHTML = '&times;';
+
+  noteDivs.appendChild(myDiv);
+  myDiv.appendChild(deleteButton);
+
+  form.editnote.value === "";
+  form.editnote.focus();
+
+  addListenerDeleteButton(deleteButton);
+}
 
 
-  /*
-  const showDeleted = (note) => note.deleted === true;
-  const showFavorites = (note) => note.favorite === true;
+/*
+const showDeleted = (note) => note.deleted === true;
+const showFavorites = (note) => note.favorite === true;
 
  
-  function filterNotes(func = () => true) {
-  //console.log(func(1));
-    let filtered = noteList.filter(func)
-    return filtered;
-  }
-  
-  function showOnlyFavs() {
-    let notes = document.querySelector('#notes');
-    notes.innerHTML = "";
-  
-    let onlyFavs = filterNotes(showDeleted);
-    onlyFavs.forEach(function (note) {
-        renderNotelist();
-    });
-    */
+function filterNotes(func = () => true) {
+//console.log(func(1));
+  let filtered = noteList.filter(func)
+  return filtered;
+}
+ 
+function showOnlyFavs() {
+  let notes = document.querySelector('#notes');
+  notes.innerHTML = "";
+ 
+  let onlyFavs = filterNotes(showDeleted);
+  onlyFavs.forEach(function (note) {
+      renderNotelist();
+  });
+  */
 
 
 
 
-  function addListenerDeleteButton(deleteButton) {
-    deleteButton.addEventListener('click', function (e) {
-      e.stopPropagation();
-      deleteNote(e);
-    });
-  }
-  
-  function deleteNote(e) {
-    let noteID = e.target.parentNode.id
-    noteList = noteList.filter(note => note.id !== Number(noteID)); 
+function addListenerDeleteButton(deleteButton) {
+  deleteButton.addEventListener('click', function (e) {
+    e.stopPropagation();
+    deleteNote(e);
+  });
+}
 
-     saveNotes();
-    let eventNote = e.target.parentNode;
-    eventNote.parentNode.removeChild(eventNote); 
-  }
+function deleteNote(e) {
+  let noteID = e.target.parentNode.id
+  noteList = noteList.filter(note => note.id !== Number(noteID));
+
+  saveNotes();
+  let eventNote = e.target.parentNode;
+  eventNote.parentNode.removeChild(eventNote);
+}
 
 
-  function renderNoteList() {
-    document.querySelector("#notes").innerHTML = "";
-    noteList = JSON.parse(localStorage.getItem('notes'));
-    console.log(noteList)
+function renderNoteList() {
+  document.querySelector("#notes").innerHTML = "";
+  noteList = JSON.parse(localStorage.getItem('notes'));
+  console.log(noteList)
   /*
   noteList.forEach(function (note) {
     ...
   }); */
-  if (noteList) {}
+  if (noteList) {
     noteList.forEach(note => {
-    renderDiv(note);
-  })
+      renderDiv(note);
+    })
+  }
 }
 
 
 
 // Event Listeners
-  navbar.newNote.addEventListener('click', function (e) {
+navbar.newNote.addEventListener('click', function (e) {
   e.preventDefault();
-    addNote();
-    renderNoteList();
+  addNote();
+  renderNoteList();
+
+})
+document.querySelector('#formAddButton').addEventListener('click', function (e) {
+  e.preventDefault();
+  // utgå ifrån att selectedNote innehåller noten som för tillfället ändras
+  // titta på hur addnote ser ut
+  // ändra selectedNote så att innehållet från editorn i nuläget hamnar i selectedNote, glöm inte title!
+  // när detta funkar (verifiera med en console.log(selectedNote))
+  // anropa saveNotes()
 
 })
 /*
