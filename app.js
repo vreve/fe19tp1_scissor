@@ -1,5 +1,5 @@
 var noteList = [];
-var selectedNote = {};
+var selectedNote;
 
 /* reminder object från array påverkar arrayen
 noteList [{},{},{}]
@@ -110,8 +110,11 @@ function selectNote(noteID) {
   // setcontents note.content
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
+  quill.setText(selectedNote.title);
+
   form.color.value = selectedNote.color;
 }
+
 
 function renderDiv(note) {
   let noteDivs = document.querySelector("#notes");
@@ -201,20 +204,83 @@ navbar.newNote.addEventListener('click', function (e) {
   e.preventDefault();
   addNote();
   renderNoteList();
-
 })
+
+/*function updateNote() {
+  let selectedNote = {
+    id: Date.now(),
+    content: quill.getContents(),
+    title: quill.getText(0, 20),
+    }
+}
+*/
+
 document.querySelector('#formAddButton').addEventListener('click', function (e) {
   e.preventDefault();
-  // utgå ifrån att selectedNote innehåller noten som för tillfället ändras
-  // titta på hur addnote ser ut
+  console.log(selectedNote);
 
-  // ändra selectedNote så att innehållet från editorn i nuläget hamnar i selectedNote, glöm inte title!
-  // när detta funkar (verifiera med en console.log(selectedNote))
-  // anropa saveNotes()
+  selectedNote.content = quill.getContents();
+  selectedNote.title = quill.getText(0, 20);
 
-  
 
+
+  saveNotes();
+  document.querySelector("#notes").innerHTML = "";
+  noteList.forEach(note => {
+    renderDiv(note);
+  })
+  //quill.setContents(selectedNote.content); // detta laddar editor
+  //quill.getText();
+  //renderNoteList();
 })
+
+/*quill.getContents(selectedNote.content);
+quill.getText(selectedNote.title);
+quill.setContent(selectedNote.content);
+quill.getText(selectedNote.title);*/
+
+
+// utgå ifrån att selectedNote innehåller noten som för tillfället ändras
+// titta på hur addnote ser ut
+// ändra selectedNote så att innehållet från editorn i nuläget hamnar i selectedNote, glöm inte title!
+// när detta funkar (verifiera med en console.log(selectedNote))
+// anropa saveNotes()
+/*
+
+  document.getElementById("fname").onchange = function()
+  {myFunction()};
+function myFunction() {
+  var x = document.getElementById("fname");
+  x.value = x.value.toUpperCase();
+}
+
+  selectedNote = noteList.find(note => note.id === noteID)
+    quill.setContents(selectedNote.content);
+    quill.setText(selectedNote.title);
+
+    form.color.value = selectedNote.color;
+
+
+
+  function addNote() {
+  let note = {
+    id: Date.now(),
+    content: quill.getContents(),
+    title: quill.getText(0, 20),
+    favourite: false,
+    color: form.color.value
+  }
+
+  if (!noteList) {
+    noteList = [];
+  }
+  noteList.unshift(note);
+  saveNotes();
+  quill.setText('');
+}
+    */
+
+
 /*
 navbar.favorite.addEventListener('click', function () {
 })
