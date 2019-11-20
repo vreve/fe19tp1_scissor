@@ -108,7 +108,7 @@ form button {
   height: 2rem;
 }
 
-#formAddButton {
+#saveBtn {
   width: 7rem;
   background-color: #8902FF;
   color: #fff;
@@ -118,7 +118,7 @@ form button {
   -webkit-transition: background-color .2s ease-in-out;
 }
 
-#formAddButton:hover {
+#saveBtn:hover {
   cursor: pointer;
   background-color: #e600e6;
 }

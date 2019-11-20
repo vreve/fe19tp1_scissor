@@ -1,5 +1,5 @@
 var noteList = [];
-var selectedNote;
+var selectedNote = {};
 
 /* reminder object från array påverkar arrayen
 noteList [{},{},{}]
@@ -63,14 +63,13 @@ window.onbeforeunload = function () {
   }
 }
 
-
 const navbar = {}
 navbar.newNote = document.querySelector('#newNote');
 navbar.favorite = document.querySelector('#favorite');
 
 const form = {}
 form.editnote = document.querySelector('#editor-container');
-form.saveBtn = document.querySelector('#formAddButton');
+form.saveBtn = document.querySelector('#saveBtn');
 form.color = document.querySelector('#formColor');
 
 form.color.addEventListener('input', function (e) {
@@ -84,7 +83,6 @@ form.editnote.focus();
 
 function saveNotes() {
   localStorage.setItem('notes', JSON.stringify(noteList));
-
 }
 
 function addNote() {
@@ -92,7 +90,7 @@ function addNote() {
     id: Date.now(),
     content: quill.getContents(),
     title: quill.getText(0, 20),
-    favourite: false,
+    favourite: true,
     color: form.color.value
   }
 
@@ -105,14 +103,14 @@ function addNote() {
 }
 
 function selectNote(noteID) {
-  console.log("id: " + noteID)
+  // console.log("id: " + noteID)
   // hitta en note i noteList vars ID stämmer överrens med argumentet id.
   // setcontents note.content
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
   quill.setText(selectedNote.title);
 
-  form.color.value = selectedNote.color;
+  // form.color.value = selectedNote.color;
 }
 
 
@@ -120,6 +118,8 @@ function renderDiv(note) {
   let noteDivs = document.querySelector("#notes");
   let myDiv = document.createElement('div');
   let deleteButton = document.createElement('span');
+
+  let favBtn = document.createElement('button');
 
   myDiv.classList.add('note');
   myDiv.classList.add(note.color);
@@ -131,39 +131,20 @@ function renderDiv(note) {
   deleteButton.classList.add('note-delete');
   deleteButton.innerHTML = '&times;';
 
+  favBtn.classList.add('favBtn');
+  favBtn.innerHTML = '&times;';
+
   noteDivs.appendChild(myDiv);
   myDiv.appendChild(deleteButton);
+
+  myDiv.appendChild(favBtn);
 
   form.editnote.value === "";
   form.editnote.focus();
 
   addListenerDeleteButton(deleteButton);
+  addListenerfavBtn(favBtn);
 }
-
-
-/*
-const showDeleted = (note) => note.deleted === true;
-const showFavorites = (note) => note.favorite === true;
-
- 
-function filterNotes(func = () => true) {
-//console.log(func(1));
-  let filtered = noteList.filter(func)
-  return filtered;
-}
- 
-function showOnlyFavs() {
-  let notes = document.querySelector('#notes');
-  notes.innerHTML = "";
- 
-  let onlyFavs = filterNotes(showDeleted);
-  onlyFavs.forEach(function (note) {
-      renderNotelist();
-  });
-  */
-
-
-
 
 function addListenerDeleteButton(deleteButton) {
   deleteButton.addEventListener('click', function (e) {
@@ -180,6 +161,37 @@ function deleteNote(e) {
   let eventNote = e.target.parentNode;
   eventNote.parentNode.removeChild(eventNote);
 }
+
+function addListenerfavBtn(favBtn) {
+  favBtn.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    console.log(selectedNote);
+  })
+}
+
+function makeFav(e) {
+  selectedNote(note.favourite === true);
+
+  saveNotes();
+
+}
+
+
+document.querySelector('#saveBtn').addEventListener('click', function (e) {
+  e.preventDefault();
+  console.log(selectedNote);
+
+  selectedNote.content = quill.getContents();
+  selectedNote.title = quill.getText(0, 20);
+
+  saveNotes();
+  document.querySelector("#notes").innerHTML = "";
+  noteList.forEach(note => {
+    renderDiv(note);
+  })
+})
+
 
 
 function renderNoteList() {
@@ -206,85 +218,57 @@ navbar.newNote.addEventListener('click', function (e) {
   renderNoteList();
 })
 
-/*function updateNote() {
-  let selectedNote = {
-    id: Date.now(),
-    content: quill.getContents(),
-    title: quill.getText(0, 20),
-    }
-}
-*/
 
-document.querySelector('#formAddButton').addEventListener('click', function (e) {
+document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
   console.log(selectedNote);
 
   selectedNote.content = quill.getContents();
   selectedNote.title = quill.getText(0, 20);
 
-
-
   saveNotes();
   document.querySelector("#notes").innerHTML = "";
   noteList.forEach(note => {
     renderDiv(note);
   })
-  //quill.setContents(selectedNote.content); // detta laddar editor
-  //quill.getText();
-  //renderNoteList();
 })
-
-/*quill.getContents(selectedNote.content);
-quill.getText(selectedNote.title);
-quill.setContent(selectedNote.content);
-quill.getText(selectedNote.title);*/
-
-
-// utgå ifrån att selectedNote innehåller noten som för tillfället ändras
-// titta på hur addnote ser ut
-// ändra selectedNote så att innehållet från editorn i nuläget hamnar i selectedNote, glöm inte title!
-// när detta funkar (verifiera med en console.log(selectedNote))
-// anropa saveNotes()
-/*
-
-  document.getElementById("fname").onchange = function()
-  {myFunction()};
-function myFunction() {
-  var x = document.getElementById("fname");
-  x.value = x.value.toUpperCase();
-}
-
-  selectedNote = noteList.find(note => note.id === noteID)
-    quill.setContents(selectedNote.content);
-    quill.setText(selectedNote.title);
-
-    form.color.value = selectedNote.color;
-
-
-
-  function addNote() {
-  let note = {
-    id: Date.now(),
-    content: quill.getContents(),
-    title: quill.getText(0, 20),
-    favourite: false,
-    color: form.color.value
-  }
-
-  if (!noteList) {
-    noteList = [];
-  }
-  noteList.unshift(note);
-  saveNotes();
-  quill.setText('');
-}
-    */
 
 
 /*
-navbar.favorite.addEventListener('click', function () {
-})
+const showDeleted = (note) => note.deleted === true;
+const showFavorites = (note) => note.favorite === true;
 
-navbar.newNote.addEventListener('click', function () {
-})
-*/
+
+function filterNotes(func = () => true) {
+//console.log(func(1));
+  let filtered = noteList.filter(func)
+  return filtered;
+}
+
+function showOnlyFavs() {
+  let notes = document.querySelector('#notes');
+  notes.innerHTML = "";
+
+  let onlyFavs = filterNotes(showDeleted);
+  onlyFavs.forEach(function (note) {
+      renderNotelist();
+  });
+  */
+const showFavourites = (note) => notes.favourite === true;
+const showDeleted = (note) => note.deleted === true;
+
+function filterNotes(func = () => true) {
+  //console.log(func(1));
+  let filtered = noteList.filter(func)
+  return filtered;
+}
+
+function showOnlyFavs() {
+  let notes = document.querySelector('#notes');
+  notes.innerHTML = "";
+
+  let onlyFavs = filterNotes(showFavourites);
+  onlyFavs.forEach(function (note) {
+    renderDiv(note);
+  })
+}
