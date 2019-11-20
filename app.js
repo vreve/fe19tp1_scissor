@@ -90,7 +90,7 @@ function addNote() {
     id: Date.now(),
     content: quill.getContents(),
     title: quill.getText(0, 20),
-    favourite: true,
+    favourite: false,
     color: form.color.value
   }
 
@@ -103,7 +103,7 @@ function addNote() {
 }
 
 function selectNote(noteID) {
-  // console.log("id: " + noteID)
+  console.log(selectedNote)
   // hitta en note i noteList vars ID stämmer överrens med argumentet id.
   // setcontents note.content
   selectedNote = noteList.find(note => note.id === noteID)
@@ -165,17 +165,22 @@ function deleteNote(e) {
 function addListenerfavBtn(favBtn) {
   favBtn.addEventListener('click', function (e) {
     e.preventDefault();
+    console.log(selectedNote)
 
-    console.log(selectedNote);
+    if (selectedNote.favourite === false) {
+      return selectedNote.favourite = true;
+
+    } else if (selectedNote.favourite === true) {
+      return selectedNote.favourite = false;
+
+    }
+
   })
-}
-
-function makeFav(e) {
-  selectedNote(note.favourite === true);
-
-  saveNotes();
+  localStorage.setItem('notes', JSON.stringify(noteList))
 
 }
+
+
 
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
@@ -237,24 +242,24 @@ document.querySelector('#saveBtn').addEventListener('click', function (e) {
 /*
 const showDeleted = (note) => note.deleted === true;
 const showFavorites = (note) => note.favorite === true;
-
-
+ 
+ 
 function filterNotes(func = () => true) {
 //console.log(func(1));
   let filtered = noteList.filter(func)
   return filtered;
 }
-
+ 
 function showOnlyFavs() {
   let notes = document.querySelector('#notes');
   notes.innerHTML = "";
-
+ 
   let onlyFavs = filterNotes(showDeleted);
   onlyFavs.forEach(function (note) {
       renderNotelist();
   });
   */
-const showFavourites = (note) => notes.favourite === true;
+const showFavourites = (note) => note.favourite === true;
 const showDeleted = (note) => note.deleted === true;
 
 function filterNotes(func = () => true) {
@@ -263,11 +268,11 @@ function filterNotes(func = () => true) {
   return filtered;
 }
 
-function showOnlyFavs() {
+function showOnlyFavs(showFavourites) {
   let notes = document.querySelector('#notes');
   notes.innerHTML = "";
 
-  let onlyFavs = filterNotes(showFavourites);
+  let onlyFavs = filterNotes();
   onlyFavs.forEach(function (note) {
     renderDiv(note);
   })
