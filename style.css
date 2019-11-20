@@ -196,5 +196,15 @@ form button {
   cursor: pointer;
   border-radius: 3%;
 }
+.showMe {
+  display: none;
 
-  
+}
+@media print {
+  #test, #box, #popUp, .navbar {
+    display: none;
+  }
+  .showMe {
+    display: block;
+  }
+}

@@ -279,36 +279,34 @@ function showOnlyFavs(showFavourites) {
 }
 
 function printout() {
+  let myDiv = document.createElement("div")
+  myDiv.classList.add("showMe")
+  myDiv.innerHTML = document.querySelector(".ql-editor").innerHTML;
+  document.body.appendChild(myDiv)
+  window.print();
+}
+
+/*
+function newprintout() {
   var newWindow = window.open();
   newWindow.document.write(document.getElementById('editor-container').innerHTML);
   newWindow.print();
 }
 
 
-/*
-
-function printout() {
- var newWindow = window.open();
- newWindow.document.write(document.getElementById('editor-container').innerHTML);
- newWindow.print();
+function printContent(el) {
+  var restorepage = document.body.innerHTML;
+  var printconent = document.getElementById(editor - container).innerHTML;
+  document.body.innerHTML = printconent;
+  window.print();
 }
+ */
 
-
-function printContent (el) {
- var restorepage = document.body.innerHTML;
- var printconent = document.getElementById(editor-container).innerHTML;
- document.body.innerHTML = printconent;
- window.print();
-}
-
-
-document.getElementById("printBtn").addEventListener("click", function () {
+/* document.getElementById("printBtn").addEventListener("click", function () {
   var printContents = document.getElementById('editor-container').innerHTML;
   var originalContents = document.body.innerHTML;
   document.body.innerHTML = printContents;
   window.print();
   document.body.innerHTML = originalContents;
 });
-
-
-*/
+ */
