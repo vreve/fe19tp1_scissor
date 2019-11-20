@@ -277,3 +277,38 @@ function showOnlyFavs(showFavourites) {
     renderDiv(note);
   })
 }
+
+function printout() {
+  var newWindow = window.open();
+  newWindow.document.write(document.getElementById('editor-container').innerHTML);
+  newWindow.print();
+}
+
+
+/*
+
+function printout() {
+ var newWindow = window.open();
+ newWindow.document.write(document.getElementById('editor-container').innerHTML);
+ newWindow.print();
+}
+
+
+function printContent (el) {
+ var restorepage = document.body.innerHTML;
+ var printconent = document.getElementById(editor-container).innerHTML;
+ document.body.innerHTML = printconent;
+ window.print();
+}
+
+
+document.getElementById("printBtn").addEventListener("click", function () {
+  var printContents = document.getElementById('editor-container').innerHTML;
+  var originalContents = document.body.innerHTML;
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+});
+
+
+*/

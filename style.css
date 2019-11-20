@@ -83,16 +83,19 @@ html {
   align-items: flex-start;
 }
 
-#editor-container {
+#editor-container, .ql-editor {
   display: flex;
   flex-wrap: wrap;
   height: 100vh;
-  width:
+  width: 100%;
 }
+
+
 
 #notes, #formColor {
   display: flex;
   width: 180px;
+  
 }
 
 html {
@@ -128,8 +131,11 @@ form button {
 #notes {
   display: flex;
   flex-wrap: wrap;
+  
   /* flex-direction: column; */
   padding-top: 2rem;
+  padding-left: 2rem;
+  
 }
 
 .note {
