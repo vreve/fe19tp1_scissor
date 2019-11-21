@@ -54,7 +54,8 @@ setInterval(function () {
     localStorage.setItem('storedText', data);
     change = new Delta();
   }
-}, 5 * 1000);
+})
+//}, 5 * 1000);
 
 // Check for unsaved data
 window.onbeforeunload = function () {
@@ -65,7 +66,7 @@ window.onbeforeunload = function () {
 
 const navbar = {}
 navbar.newNote = document.querySelector('#newNote');
-navbar.favorite = document.querySelector('#favorite');
+navbar.favorite = document.querySelector('#bigFavBtn');
 
 const form = {}
 form.editnote = document.querySelector('#editor-container');
@@ -108,7 +109,7 @@ function selectNote(noteID) {
   // setcontents note.content
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
-  quill.setText(selectedNote.title);
+  quill.setText(selectedNote.title.setContents);
 
   // form.color.value = selectedNote.color;
 }
@@ -172,7 +173,6 @@ function addListenerfavBtn(favBtn) {
 
     } else if (selectedNote.favourite === true) {
       return selectedNote.favourite = false;
-
     }
 
   })
@@ -226,7 +226,7 @@ navbar.newNote.addEventListener('click', function (e) {
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
-  console.log(selectedNote);
+  //console.log(selectedNote);
 
   selectedNote.content = quill.getContents();
   selectedNote.title = quill.getText(0, 20);
@@ -239,28 +239,14 @@ document.querySelector('#saveBtn').addEventListener('click', function (e) {
 })
 
 
-/*
-const showDeleted = (note) => note.deleted === true;
-const showFavorites = (note) => note.favorite === true;
- 
- 
-function filterNotes(func = () => true) {
-//console.log(func(1));
-  let filtered = noteList.filter(func)
-  return filtered;
-}
- 
-function showOnlyFavs() {
-  let notes = document.querySelector('#notes');
-  notes.innerHTML = "";
- 
-  let onlyFavs = filterNotes(showDeleted);
-  onlyFavs.forEach(function (note) {
-      renderNotelist();
-  });
-  */
 const showFavourites = (note) => note.favourite === true;
 const showDeleted = (note) => note.deleted === true;
+
+document.querySelector('#bigFavBtn').addEventListener('click', function (e) {
+  console.log('favvis');
+  filterNotes();
+  showOnlyFavs();
+})
 
 function filterNotes(func = () => true) {
   //console.log(func(1));
@@ -268,15 +254,15 @@ function filterNotes(func = () => true) {
   return filtered;
 }
 
-function showOnlyFavs(showFavourites) {
+function showOnlyFavs() {
   let notes = document.querySelector('#notes');
   notes.innerHTML = "";
 
-  let onlyFavs = filterNotes();
+  let onlyFavs = filterNotes(showFavourites);
   onlyFavs.forEach(function (note) {
     renderDiv(note);
   })
-}
+}  
 
 function printout() {
   let myDiv = document.createElement("div")
@@ -285,28 +271,3 @@ function printout() {
   document.body.appendChild(myDiv)
   window.print();
 }
-
-/*
-function newprintout() {
-  var newWindow = window.open();
-  newWindow.document.write(document.getElementById('editor-container').innerHTML);
-  newWindow.print();
-}
-
-
-function printContent(el) {
-  var restorepage = document.body.innerHTML;
-  var printconent = document.getElementById(editor - container).innerHTML;
-  document.body.innerHTML = printconent;
-  window.print();
-}
- */
-
-/* document.getElementById("printBtn").addEventListener("click", function () {
-  var printContents = document.getElementById('editor-container').innerHTML;
-  var originalContents = document.body.innerHTML;
-  document.body.innerHTML = printContents;
-  window.print();
-  document.body.innerHTML = originalContents;
-});
- */
