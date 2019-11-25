@@ -35,7 +35,7 @@ var quill = new Quill('#editor-container', {
       ['image', 'code-block']
     ]
   },
-  placeholder: 'Ny anteckning...', 
+  placeholder: 'Ny anteckning...',
   theme: 'snow'  // or 'bubble'
 });
 
@@ -271,7 +271,7 @@ function showOnlyFavs() {
   onlyFavs.forEach(function (note) {
     renderDiv(note);
   })
-}  
+}
 
 function printout() {
   let myDiv = document.createElement("div")
@@ -282,9 +282,31 @@ function printout() {
 }
 
 
-
 var btnBack = document.getElementById('btnBack');
 btnBack.addEventListener('click', function () {
   document.body.classList.toggle('BgClass');
 });
+
+// function btnColor(note) {
+//   var property = document.getElementsByClassName('note');
+//   if (property.className !== 'note') {
+//     property.style.backgroundColor = #0, 1, 1;
+//     property.className = 'note'
+//   }
+//   else {
+//     property.style.backgroundColor = #0, 0, 0;
+//     property.className = 'note1';
+//   }
+// }
+
+// var btnBack = document.getElementById('btnBack');
+// btnBack.addEventListener('click', function () {
+//   document.body.classList.toggle('');
+// });
+
+
+
+
+
+
 
