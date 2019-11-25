@@ -35,7 +35,7 @@ var quill = new Quill('#editor-container', {
       ['image', 'code-block']
     ]
   },
-  placeholder: 'Ny anteckning...',
+  placeholder: 'Ny anteckning...', 
   theme: 'snow'  // or 'bubble'
 });
 
@@ -126,14 +126,26 @@ function renderDiv(note) {
   myDiv.classList.add(note.color);
   myDiv.id = note.id;
 
-  myDiv.innerHTML = `${note.title} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+  let noteTitle;
+  if (note.title.length > 10) {
+    noteTitle = note.title.substring(0, 10) + "..."
+  } else {
+    noteTitle = note.title;
+  }
+
+  myDiv.innerHTML = `${noteTitle} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
   myDiv.addEventListener("click", () => selectNote(note.id));
 
   deleteButton.classList.add('note-delete');
   deleteButton.innerHTML = '&times;';
 
   favBtn.classList.add('favBtn');
-  favBtn.innerHTML = '&times;';
+  favBtn.innerHTML = 'Fav';
+  if (note.favourite) {
+    favBtn.classList.add("favRed");
+  } else {
+    favBtn.innerHTML = 'Fav';
+  }
 
   noteDivs.appendChild(myDiv);
   myDiv.appendChild(deleteButton);
@@ -166,21 +178,18 @@ function deleteNote(e) {
 function addListenerfavBtn(favBtn) {
   favBtn.addEventListener('click', function (e) {
     e.preventDefault();
+    let noteID = e.target.closest("div").id;
+    selectedNote = noteList.find(note => note.id === Number(noteID))
     console.log(selectedNote)
-
-    if (selectedNote.favourite === false) {
-      return selectedNote.favourite = true;
-
-    } else if (selectedNote.favourite === true) {
-      return selectedNote.favourite = false;
+    if (selectedNote.favourite) {
+      e.target.classList.remove("favRed");
+    } else {
+      favBtn.classList.add("favRed");
     }
-
+    selectedNote.favourite = !selectedNote.favourite;
+    saveNotes()
   })
-  localStorage.setItem('notes', JSON.stringify(noteList))
-
 }
-
-
 
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
@@ -271,3 +280,11 @@ function printout() {
   document.body.appendChild(myDiv)
   window.print();
 }
+
+
+
+var btnBack = document.getElementById('btnBack');
+btnBack.addEventListener('click', function () {
+  document.body.classList.toggle('BgClass');
+});
+
