@@ -104,12 +104,12 @@ function addNote() {
 }
 
 function selectNote(noteID) {
-  console.log(selectedNote)
+  //console.log(selectedNote)
   // hitta en note i noteList vars ID stämmer överrens med argumentet id.
   // setcontents note.content
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
-  quill.setText(selectedNote.title.setContents);
+  //quill.setText(selectedNote.title.setContents);
 
   // form.color.value = selectedNote.color;
 }
@@ -125,8 +125,14 @@ function renderDiv(note) {
   myDiv.classList.add('note');
   myDiv.classList.add(note.color);
   myDiv.id = note.id;
+  let noteTitle;
+  if (note.title.length > 10) {
+    noteTitle = note.title.substring(0, 10) + "..."
+  } else {
+    noteTitle = note.title;
+  }
 
-  myDiv.innerHTML = `${note.title} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+  myDiv.innerHTML = `${noteTitle} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
   myDiv.addEventListener("click", () => selectNote(note.id));
 
   deleteButton.classList.add('note-delete');
@@ -134,7 +140,12 @@ function renderDiv(note) {
 
   favBtn.classList.add('favBtn');
   favBtn.innerHTML = '&times;';
-
+  if (note.favourite) {
+    favBtn.classList.add("favRed");
+  } else {
+    //favBtn.innerHTML = '&times;';
+  }
+  //favBtn.innerHTML = (note.favourite) ? 'F' : '&times;';
   noteDivs.appendChild(myDiv);
   myDiv.appendChild(deleteButton);
 
@@ -166,17 +177,25 @@ function deleteNote(e) {
 function addListenerfavBtn(favBtn) {
   favBtn.addEventListener('click', function (e) {
     e.preventDefault();
+    let noteID = e.target.closest("div").id
+    selectedNote = noteList.find(note => note.id === Number(noteID))
     console.log(selectedNote)
-
-    if (selectedNote.favourite === false) {
-      return selectedNote.favourite = true;
-
-    } else if (selectedNote.favourite === true) {
-      return selectedNote.favourite = false;
+    if (selectedNote.favourite) {
+      e.target.classList.remove("favRed");
+    } else {
+      favBtn.classList.add("favRed");
     }
+    selectedNote.favourite = !selectedNote.favourite;
 
+    /*    if (selectedNote.favourite === false) {
+         return selectedNote.favourite = true;
+   
+       } else if (selectedNote.favourite === true) {
+         return selectedNote.favourite = false;
+       } */
+    saveNotes();
   })
-  localStorage.setItem('notes', JSON.stringify(noteList))
+  //localStorage.setItem('notes', JSON.stringify(noteList))
 
 }
 
@@ -244,7 +263,7 @@ const showDeleted = (note) => note.deleted === true;
 
 document.querySelector('#bigFavBtn').addEventListener('click', function (e) {
   console.log('favvis');
-  filterNotes();
+  //filterNotes();
   showOnlyFavs();
 })
 
@@ -262,7 +281,7 @@ function showOnlyFavs() {
   onlyFavs.forEach(function (note) {
     renderDiv(note);
   })
-}  
+}
 
 function printout() {
   let myDiv = document.createElement("div")

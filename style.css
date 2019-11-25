@@ -199,6 +199,9 @@ form button {
   display: none;
 
 }
+.favRed {
+  background-color: red;
+}
 @media print {
   #test, #box, #popUp, .navbar {
     display: none;
