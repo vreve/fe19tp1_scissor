@@ -81,6 +81,16 @@ html {
   flex-wrap: wrap;
   justify-content: column;
   align-items: flex-start;
+  border: none !important;
+  background-color: black; 
+}
+
+ .ql-snow .ql-stroke {
+  stroke: white !important;
+}
+
+.ql-snow .ql-picker-label::before {
+  color: white;
 }
 
 #editor-container, .ql-editor {
@@ -88,13 +98,13 @@ html {
   flex-wrap: wrap;
   height: 100vh;
   width: 100%;
+  border-right: initial;
 }
 
 
 #notes, #formColor {
   display: flex;
   width: 180px;
-  
 }
 
 html {
@@ -147,8 +157,26 @@ form button {
   margin: 2.4rem 2.4rem 0 0;
   box-shadow: 0 0.9rem 1.2rem rgba(0,0,0, 0.1);
   position: relative;
-  color: black;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
+
+/* .note1 {
+  width: 24rem;
+  height: 5rem;
+  font-size: 1.4rem;
+  background: #fff;
+  border-radius: 0.4rem;
+  padding: 1.2rem 1.6rem;
+  margin: 2.4rem 2.4rem 0 0;
+  box-shadow: 0 0.9rem 1.2rem rgba(0,0,0, 0.1);
+  position: relative;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+} */
+
 
 .note-text {
   height: 100%;
@@ -214,6 +242,7 @@ body {
     background-size: cover; 
     background-repeat: no-repeat;  
     background-attachment: fixed; 
+    
   }
 
 input#btnBack {
@@ -226,10 +255,11 @@ input#btnBack {
 }
 
 .ql-editor::before {
-  background-color: #8902FF;
+  background-color: rgb(136, 0, 255);
   color: white;
 }
 
 .favRed {
   color:red;
 }
+
