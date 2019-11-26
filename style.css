@@ -100,15 +100,16 @@ html {
   flex-wrap: wrap;
   height: 100vh;
   width: 100%;
-  max-width: 1000px;
-  border-right: initial;
-  border-block-end: none;
+  max-width: 800px;
+  border: right;
+  border-right: none;
+  border-bottom: none;
 }
 
 
 #notes, #formColor {
   display: flex;
-  width: 180px;
+  width: 200px;
 }
 
 html {
@@ -154,7 +155,7 @@ margin-left: 20px;
 }
 
 .note {
-  width: 24rem;
+  width: 80%;
   height: 5rem;
   font-size: 1.4rem;
   background: #fff;
@@ -166,11 +167,6 @@ margin-left: 20px;
   background-color: white;
   color: black;
   border: 1px solid white;
-}
-
-.note-text {
-  height: 100%;
-  overflow-y: auto;
 }
 
 .note::after {
@@ -200,12 +196,11 @@ margin-left: 20px;
 /* deleteknapp */
 .note span {
   background-image:url(deleteBtn.svg);
-  color: #333;
   position: absolute;
   width: 2.1rem;
   height: 2rem;
   top: 0.2rem;
-  right: 0.2rem
+  right: 0.6rem;
 }
 
 .note span:hover {
@@ -270,18 +265,5 @@ input#btnBack {
   border: none;
 }
 
-.note span {
-  background-image:url(deleteBtn.svg);
-  color: #333;
-  position: absolute;
-  width: 2.1rem;
-  height: 2rem;
-  top: 0.2rem;
-  right: 0.6rem
-}
 
-.note span:hover {
-  background-image:url(deleteBtnActive.svg);
-  cursor: pointer; 
-}
 
