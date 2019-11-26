@@ -139,11 +139,11 @@ function renderDiv(note) {
 
   deleteButton.classList.add('note-delete');
 
-   
+
   favBtn.classList.add('favBtn');
   if (note.favourite) {
     favBtn.classList.add("favRed");
-    
+
   } else {
     //favBtn.classList.add('favBtn');
   };
@@ -225,7 +225,7 @@ function renderNoteList() {
 }
 
 // Event Listeners
-document.querySelector('#newNote').addEventListener('click', function (e){
+document.querySelector('#newNote').addEventListener('click', function (e) {
   e.preventDefault();
   addNote();
   renderNoteList();
@@ -269,7 +269,7 @@ function showOnlyFavs() {
   onlyFavs.forEach(function (note) {
     renderDiv(note);
   })
-}  
+}
 
 function printout() {
   let myDiv = document.createElement("div")
@@ -289,3 +289,26 @@ document.querySelector('#showAllNotes').addEventListener('click', function (e) {
   e.preventDefault();
   renderNoteList();
 })
+// function btnColor(note) {
+//   var property = document.getElementsByClassName('note');
+//   if (property.className !== 'note') {
+//     property.style.backgroundColor = #0, 1, 1;
+//     property.className = 'note'
+//   }
+//   else {
+//     property.style.backgroundColor = #0, 0, 0;
+//     property.className = 'note1';
+//   }
+// }
+
+// var btnBack = document.getElementById('btnBack');
+// btnBack.addEventListener('click', function () {
+//   document.body.classList.toggle('');
+// });
+
+
+
+
+
+
+
