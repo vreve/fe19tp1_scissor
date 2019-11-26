@@ -37,6 +37,8 @@
   align-self: flex-end;
 }
 
+/* BODY */
+
 body {
   display: flex;
 }
@@ -81,34 +83,35 @@ html {
   flex-wrap: wrap;
   justify-content: column;
   align-items: flex-start;
+  border: none !important;
 }
 
-#editor-container, .ql-editor {
+#editor, .ql-editor {
   /* display: flex; */
   flex-wrap: wrap;
   height: 100vh;
   width: 100%;
+  max-width: 1000px;
+  border-right: initial;
+  border-block-end: none;
 }
 
 
 #notes, #formColor {
   display: flex;
   width: 180px;
-  
 }
 
 html {
   font-size: 62.5%;
 }
 
-
-
-form select, 
+/* form select, 
 form button {
   display: inline-block;
   margin: 2rem 1rem 0 0;
   height: 2rem;
-}
+} */
 
 #saveBtn {
   width: 7rem;
@@ -125,6 +128,9 @@ form button {
   background-color: #e600e6;
 }
 
+#saveBtn, #formColor {
+margin-left: 20px;
+}
 
 /* Note Styles */
 #notes {
@@ -134,6 +140,7 @@ form button {
   /* flex-direction: column; */
   padding-top: 2rem;
   padding-left: 2rem;
+  padding-right: 1rem;
   
 }
 
@@ -143,9 +150,9 @@ form button {
   font-size: 1.4rem;
   background: #fff;
   border-radius: 0.4rem;
-  padding: 1.2rem 1.6rem;
-  margin: 2.4rem 2.4rem 0 0;
-  box-shadow: 0 0.9rem 1.2rem rgba(0,0,0, 0.1);
+  padding: 1.2rem 1.2rem;
+  margin: 1rem 1rem 0 0;
+  box-shadow: 0 0.2rem 0.5rem rgba(0,0,0, 0.1);
   position: relative;
   color: black;
 }
@@ -179,23 +186,22 @@ form button {
   background-color: gold;
 }
 
+/* deleteknapp */
 .note span {
+  background-image:url(deleteBtn.svg);
+  color: #333;
   position: absolute;
-  width: 2rem;
+  width: 2.1rem;
   height: 2rem;
   top: 0.2rem;
-  right: 0.2rem;
-  border-radius: 0.4rem;
-  color: #999;
-  text-align: center;
+  right: 0.2rem
 }
 
 .note span:hover {
-  color: #333;
-  background: #f5f5f5;
-  cursor: pointer;
-  border-radius: 3%;
+  background-image:url(deleteBtnActive.svg);
+  cursor: pointer; 
 }
+
 .showMe {
   display: none;
 
@@ -230,6 +236,40 @@ input#btnBack {
   color: white;
 }
 
-.favRed {
-  color:red;
+.favBtn {
+  background-image:url(favBorderBtn.svg);
+  position: absolute;
+  width: 2.5rem;
+  height: 2.4rem;
+  top: 4rem;
+  right: 0.2rem;
+  cursor: pointer; 
+  border: none;
 }
+
+.favRed {
+  background-image:url(heart2.png);
+  position: absolute;
+  width: 2rem;
+  height: 2.1rem;
+  top: 4rem;
+  right: 0.6rem;
+  cursor: pointer; 
+  border: none;
+}
+
+.note span {
+  background-image:url(deleteBtn.svg);
+  color: #333;
+  position: absolute;
+  width: 2.1rem;
+  height: 2rem;
+  top: 0.2rem;
+  right: 0.6rem
+}
+
+.note span:hover {
+  background-image:url(deleteBtnActive.svg);
+  cursor: pointer; 
+}
+

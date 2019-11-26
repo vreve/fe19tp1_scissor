@@ -26,7 +26,7 @@ function popUpLoad() {
 }
 
 var Delta = Quill.import('delta');
-var quill = new Quill('#editor-container', {
+var quill = new Quill('#editor', {
   modules: {
     toolbar: [
       [{ header: [1, 2, false] }],
@@ -35,9 +35,10 @@ var quill = new Quill('#editor-container', {
       ['image', 'code-block']
     ]
   },
-  placeholder: 'Ny anteckning...', 
+  placeholder: 'Ny anteckning...',
   theme: 'snow'  // or 'bubble'
 });
+
 
 // Store accumulated changes
 var change = new Delta();
@@ -69,9 +70,10 @@ navbar.newNote = document.querySelector('#newNote');
 navbar.favorite = document.querySelector('#bigFavBtn');
 
 const form = {}
-form.editnote = document.querySelector('#editor-container');
+form.editnote = document.querySelector('#editor');
 form.saveBtn = document.querySelector('#saveBtn');
 form.color = document.querySelector('#formColor');
+form.showAllNotes = document.querySelector('#showAllNotes');
 
 form.color.addEventListener('input', function (e) {
   console.log(e.target.value);
@@ -119,7 +121,6 @@ function renderDiv(note) {
   let noteDivs = document.querySelector("#notes");
   let myDiv = document.createElement('div');
   let deleteButton = document.createElement('span');
-
   let favBtn = document.createElement('button');
 
   myDiv.classList.add('note');
@@ -137,15 +138,15 @@ function renderDiv(note) {
   myDiv.addEventListener("click", () => selectNote(note.id));
 
   deleteButton.classList.add('note-delete');
-  deleteButton.innerHTML = '&times;';
 
+   
   favBtn.classList.add('favBtn');
-  favBtn.innerHTML = 'Fav';
   if (note.favourite) {
     favBtn.classList.add("favRed");
+    
   } else {
-    favBtn.innerHTML = 'Fav';
-  }
+    //favBtn.classList.add('favBtn');
+  };
 
   noteDivs.appendChild(myDiv);
   myDiv.appendChild(deleteButton);
@@ -223,15 +224,12 @@ function renderNoteList() {
   }
 }
 
-
-
 // Event Listeners
-navbar.newNote.addEventListener('click', function (e) {
+document.querySelector('#newNote').addEventListener('click', function (e){
   e.preventDefault();
   addNote();
   renderNoteList();
 })
-
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
@@ -281,10 +279,13 @@ function printout() {
   window.print();
 }
 
-
-
 var btnBack = document.getElementById('btnBack');
 btnBack.addEventListener('click', function () {
   document.body.classList.toggle('BgClass');
 });
 
+document.querySelector('#showAllNotes').addEventListener('click', function (e) {
+  console.log('hu');
+  e.preventDefault();
+  renderNoteList();
+})
