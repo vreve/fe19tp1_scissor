@@ -97,12 +97,17 @@ function addNote() {
     color: form.color.value
   }
 
+
   if (!noteList) {
     noteList = [];
   }
+
+  document.querySelector(".ql-editor").contentEditable = true
+
   noteList.unshift(note);
   saveNotes();
   quill.setText('');
+  //quill.focus();
 }
 
 function selectNote(noteID) {
@@ -111,8 +116,9 @@ function selectNote(noteID) {
   // setcontents note.content
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
-  quill.setText(selectedNote.title.setContents);
-
+  quill.setText(selectedNote.title);
+  document.querySelector(".ql-editor").contentEditable = true;
+  quill.focus();
   // form.color.value = selectedNote.color;
 }
 
@@ -222,6 +228,7 @@ function renderNoteList() {
       renderDiv(note);
     })
   }
+  document.querySelector(".ql-editor").contentEditable = false;
 }
 
 // Event Listeners
@@ -229,6 +236,8 @@ document.querySelector('#newNote').addEventListener('click', function (e) {
   e.preventDefault();
   addNote();
   renderNoteList();
+  document.querySelector(".ql-editor").contentEditable = true;
+  quill.focus();
 })
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
@@ -285,29 +294,9 @@ btnBack.addEventListener('click', function () {
 });
 
 document.querySelector('#showAllNotes').addEventListener('click', function (e) {
-  console.log('hu');
   e.preventDefault();
   renderNoteList();
 })
-// function btnColor(note) {
-//   var property = document.getElementsByClassName('note');
-//   if (property.className !== 'note') {
-//     property.style.backgroundColor = #0, 1, 1;
-//     property.className = 'note'
-//   }
-//   else {
-//     property.style.backgroundColor = #0, 0, 0;
-//     property.className = 'note1';
-//   }
-// }
-
-// var btnBack = document.getElementById('btnBack');
-// btnBack.addEventListener('click', function () {
-//   document.body.classList.toggle('');
-// });
-
-
-
 
 
 
