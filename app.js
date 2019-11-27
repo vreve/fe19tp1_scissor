@@ -68,6 +68,10 @@ const navbar = {}
 navbar.newNote = document.querySelector('#newNote');
 navbar.favorite = document.querySelector('#bigFavBtn');
 
+const sidenav = {}
+sidenav.newNote = document.querySelector('#sideNewNote');
+sidenav.favorite = document.querySelector('#sideBigFavBtn');
+
 const form = {}
 form.editnote = document.querySelector('#editor-container');
 form.saveBtn = document.querySelector('#saveBtn');
@@ -105,13 +109,11 @@ function addNote() {
 
 function selectNote(noteID) {
   console.log(selectedNote)
-  // hitta en note i noteList vars ID stämmer överrens med argumentet id.
-  // setcontents note.content
+
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
-  quill.setText(selectedNote.title.setContents);
 
-  // form.color.value = selectedNote.color;
+  form.color.value = selectedNote.color;
 }
 
 
@@ -135,6 +137,9 @@ function renderDiv(note) {
 
   myDiv.innerHTML = `${noteTitle} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
   myDiv.addEventListener("click", () => selectNote(note.id));
+
+
+
 
   deleteButton.classList.add('note-delete');
   deleteButton.innerHTML = '&times;';
@@ -199,6 +204,7 @@ document.querySelector('#saveBtn').addEventListener('click', function (e) {
   selectedNote.content = quill.getContents();
   selectedNote.title = quill.getText(0, 20);
 
+
   saveNotes();
   document.querySelector("#notes").innerHTML = "";
   noteList.forEach(note => {
@@ -231,6 +237,11 @@ navbar.newNote.addEventListener('click', function (e) {
   addNote();
   renderNoteList();
 })
+sidenav.newNote.addEventListener('click', function (e) {
+  e.preventDefault();
+  addNote();
+  renderNoteList();
+})
 
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
@@ -252,6 +263,11 @@ const showFavourites = (note) => note.favourite === true;
 const showDeleted = (note) => note.deleted === true;
 
 document.querySelector('#bigFavBtn').addEventListener('click', function (e) {
+  console.log('favvis');
+  filterNotes();
+  showOnlyFavs();
+})
+document.querySelector('#sideBigFavBtn').addEventListener('click', function (e) {
   console.log('favvis');
   filterNotes();
   showOnlyFavs();
@@ -282,27 +298,86 @@ function printout() {
 }
 
 
+
+
+
+
+
+// kod för att se om dark mode är aktivt:
+// var lastThree = document.querySelector("#darkmode").href.substr(document.querySelector("#darkmode").href.length - 3); // => "Tabs1"
+// lastThree == "tml" betyder ej aktivt, == "css" betyder aktivt
+// kod för at aktivera dark mode:
+// document.querySelector("#darkmode").href="darkmode.css"
+
+// deaktivera:
+// document.querySelector("#darkmode").href=""
+
+
+
 var btnBack = document.getElementById('btnBack');
+var lastThree;
 btnBack.addEventListener('click', function () {
-  document.body.classList.toggle('BgClass');
+  lastThree = document.querySelector("#darkmode").href.substr(document.querySelector("#darkmode").href.length - 3); // => "tml(ej aktivt" || "css(aktivt)"
+  console.log(lastThree)
+  // om dark mode icke är aktivt sätt det till aktivt annars sätt det till icke aktivt
+  if (lastThree == "tml") {
+    document.querySelector("#darkmode").href = "darkmode.css";
+  } else {
+    document.querySelector("#darkmode").href = "";
+  }
 });
 
-// function btnColor(note) {
-//   var property = document.getElementsByClassName('note');
-//   if (property.className !== 'note') {
-//     property.style.backgroundColor = #0, 1, 1;
-//     property.className = 'note'
-//   }
-//   else {
-//     property.style.backgroundColor = #0, 0, 0;
-//     property.className = 'note1';
+var btnBack = document.getElementById('sideBtnBack');
+var lastThree;
+btnBack.addEventListener('click', function () {
+  lastThree = document.querySelector("#darkmode").href.substr(document.querySelector("#darkmode").href.length - 3); // => "tml(ej aktivt" || "css(aktivt)"
+  console.log(lastThree)
+  // om dark mode icke är aktivt sätt det till aktivt annars sätt det till icke aktivt
+  if (lastThree == "tml") {
+    document.querySelector("#darkmode").href = "darkmode.css";
+  } else {
+    document.querySelector("#darkmode").href = "";
+  }
+});
+
+
+
+
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+
+
+
+
+// function searchFunc() {
+//   var input, filter, ul, li, a, i, txtValue;
+//   input = document.getElementById('search');
+//   filter = input.value.toUpperCase('#search');
+//   ul = document.getElementById("div");
+//   li = ul.getElementsByTagName('title');
+
+//   for (i = 0; i < li.length; i++) {
+//     a = ul[i].getElementsByTagName("div")[0];
+//     txtValue = a.textContent || a.innerText;
+//     if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//       ul[i].style.display = "";
+//     } else {
+//       ul[i].style.display = "none";
+//     }
 //   }
 // }
 
-// var btnBack = document.getElementById('btnBack');
-// btnBack.addEventListener('click', function () {
-//   document.body.classList.toggle('');
-// });
+
+
+
+
+
 
 
 

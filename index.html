@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <link rel='stylesheet' type='text/css' href='style.css'>
+    <link id="darkmode" rel='stylesheet' type='text/css' href=''>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
     <link href='https://cdn.quilljs.com/1.2.6/quill.snow.css' rel='stylesheet'>
     <script src='https://cdn.quilljs.com/1.2.6/quill.min.js'></script>
@@ -26,6 +27,7 @@
 
 
     <div class='navbar'>
+
         <a href='#' class='navBtn' id='newNote'>
             <span class='material-icons'>note_add</span>
         </a>
@@ -44,13 +46,47 @@
         <a href='#' class='navBtn' id="btnBack">
             <span class='material-icons'>brightness_2</span>
         </a>
-        
-        <!-- <input type="button" id="btnBack" value="Toggle Background" /> -->
     </div>
 
+
+
+    <!-- <div id="sideLayout">
+<span style="font-size:30px;cursor:pointer" id='openBtn' onclick="openNav()">&#9776; open</span>
+
+<div id='test'>
+    <div id='editor-container'></div>
+</div> 
+
+</div> -->
+
+
+    <div id="mySidenav" class="sidenav">
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <a href='#' class='navBtn' id='sideNewNote'>
+            <span class='material-icons'>note_add</span>
+        </a>
+        <a href='#' class='navBtn'>
+            <span class='material-icons'>search</span>
+        </a>
+        <a href='#' class='navBtn' id='sideBigFavBtn'>
+            <span class='material-icons'>favorite</span>
+        </a>
+        <a href='#' class='navBtn'>
+            <span class='material-icons'>build</span>
+        </a>
+        <a href='#' class='navBtn' id='printBtn'>
+            <span class='material-icons' onclick="printout('editor-container')">print</span>
+        </a>
+        <a href='#' class='navBtn' id="sideBtnBack">
+            <span class='material-icons'>brightness_2</span>
+        </a>
+    </div>
+
+    <span style="font-size:30px;cursor:pointer" id='openBtn' onclick="openNav()">&#9776; open</span>
+
     <div id='box'>
-        <!-- <form id='form'> -->
-        <!-- <textarea name='formNoteText' id='formNoteText' cols='50' rows='8' maxlength='300'></textarea> -->
         <select name='formColor' id='formColor'>
             <option value='none'>Select color</option>
             <option value='red'>Red</option>
@@ -59,8 +95,10 @@
             <option value='yellow'>Yellow</option>
         </select>
         <button id='saveBtn'>Save</button>
+
+        <!-- <input type="text" id="search" onkeyup="searchFunc()" placeholder="Search for notes.."> -->
         <div id='notes'></div>
-        <!-- </form> -->
+
     </div>
 
     <div id='test'>
@@ -68,8 +106,9 @@
     </div>
     </div>
 
-<!-- <div style="color:red;"></div>
-<input type="button" id="btnBack" value="Toggle Background" /> -->
+
+
+
 
     <script src='app.js'></script>
 </body>

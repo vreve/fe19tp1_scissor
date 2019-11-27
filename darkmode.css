@@ -1,0 +1,36 @@
+.ql-toolbar.ql-snow {
+
+  background-color: black; 
+}
+
+ .ql-snow .ql-stroke {
+  stroke: white !important;
+}
+
+.ql-snow .ql-picker-label::before {
+  color: white;
+}
+
+.note {
+
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+body {
+    background-color: black;
+}
+
+#editor-container, .ql-editor {
+  color: white;
+}
+
+#formColor {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+#openBtn {
+  color: white;
+}
