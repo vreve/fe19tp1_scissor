@@ -26,13 +26,21 @@ function popUpLoad() {
 }
 
 var Delta = Quill.import('delta');
-var quill = new Quill('#editor', {
+var fonts = ['sans-serif', 'courier', 'impact', 'serif'];
+var Font = Quill.import('formats/font');
+Font.whitelist = ['sans-serif', 'courier', 'impact', 'serif'];
+Quill.register(Font, true);
+
+let quill = new Quill('#editor', {
   modules: {
     toolbar: [
-      [{ header: [1, 2, false] }],
+      [{ 'font': ['sans-serif', 'courier', 'impact', 'serif'] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }], 
       ['bold', 'italic', 'underline'],
+      [{ 'align': [] }],
       [{ list: "ordered" }, { list: "bullet" }],
-      ['image', 'code-block']
+      ['image', 'code-block'],
+      ['clean'],
     ]
   },
   placeholder: 'Ny anteckning...',
@@ -106,6 +114,9 @@ function addNote() {
 
   noteList.unshift(note);
   saveNotes();
+  selectedNote = noteList.find(n => n.id === note.id)
+  console.log(selectedNote)
+  //selectedNote = noteList[0];
   quill.setText('');
   //quill.focus();
 }
@@ -116,7 +127,7 @@ function selectNote(noteID) {
   // setcontents note.content
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
-  quill.setText(selectedNote.title);
+  //quill.setText(selectedNote.title);
   document.querySelector(".ql-editor").contentEditable = true;
   quill.focus();
   // form.color.value = selectedNote.color;
@@ -127,6 +138,10 @@ function renderDiv(note) {
   let noteDivs = document.querySelector("#notes");
   let myDiv = document.createElement('div');
   let deleteButton = document.createElement('span');
+/*   let newDeleteButton = document.createElement('i');
+  newDeleteButton.classList.add("fa");
+  newDeleteButton.classList.add("fa-trash");
+  newDeleteButton.classList.add('note-delete'); */
   let favBtn = document.createElement('button');
 
   myDiv.classList.add('note');
@@ -201,10 +216,13 @@ function addListenerfavBtn(favBtn) {
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
-  console.log(selectedNote);
+  let noteToUpdate = noteList.find(note => note.id === selectedNote.id)
+  console.log(noteToUpdate);
 
-  selectedNote.content = quill.getContents();
-  selectedNote.title = quill.getText(0, 20);
+  noteToUpdate.content = quill.getContents();
+  noteToUpdate.title = quill.getText(0, 20);
+  console.log(noteToUpdate);
+  selectedNote = noteToUpdate
 
   saveNotes();
   document.querySelector("#notes").innerHTML = "";

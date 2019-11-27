@@ -1,3 +1,50 @@
+/*FONTS*/
+.ql-font-arial {
+  font-family: 'sans-serif';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='arial']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='arial']::before
+  {
+    content: 'sans-serif';
+    font-family: 'sans-serif';
+  }
+
+
+.ql-font-serif {
+  font-family: 'Serif', sans-serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='serif']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']::before
+{
+  content: 'Serif';
+  font-family: 'Serif';
+}
+
+.ql-font-impact {
+  font-family: 'Impact', sans-serif;
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='impact']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='impact']::before
+{
+  content: 'Impact';
+  font-family: 'Impact';
+}
+
+
+.ql-font-courier {
+  font-family: 'Courier', sans-serif;
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='courier']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='courier']::before
+{
+
+  content: 'Courier';
+  font-family: 'Courier';
+}
+
+
 /*POPUP*/
 .popUpHide{
   display: none;
@@ -41,6 +88,7 @@
 
 body {
   display: flex;
+  margin: 0;
 }
 
 html {
@@ -109,19 +157,13 @@ html {
 
 #notes, #formColor {
   display: flex;
-  width: 200px;
+  width: 230px;
 }
+
 
 html {
   font-size: 62.5%;
 }
-
-/* form select, 
-form button {
-  display: inline-block;
-  margin: 2rem 1rem 0 0;
-  height: 2rem;
-} */
 
 #saveBtn {
   width: 7rem;
@@ -139,7 +181,7 @@ form button {
 }
 
 #saveBtn, #formColor {
-margin-left: 20px;
+margin-left: 1rem;
 }
 
 /* Note Styles */
@@ -148,10 +190,10 @@ margin-left: 20px;
   flex-wrap: wrap;
   
   /* flex-direction: column; */
-  padding-top: 2rem;
-  padding-left: 2rem;
+  padding-top: 1.4rem;
+  padding-left: 1rem;
   padding-right: 1rem;
-  
+  margin: 0;
 }
 
 .note {
@@ -195,12 +237,12 @@ margin-left: 20px;
 
 /* deleteknapp */
 .note span {
-  background-image:url(deleteBtn.svg);
+  background-image:url(deleteBtn.svg); 
   position: absolute;
-  width: 2.1rem;
-  height: 2rem;
-  top: 0.2rem;
-  right: 0.6rem;
+  width: 2rem;
+  height: 2.3rem;
+  top: 0.5rem;
+  right: 0.3rem;
 }
 
 .note span:hover {
@@ -226,7 +268,6 @@ body {
     background-size: cover; 
     background-repeat: no-repeat;  
     background-attachment: fixed; 
-    
   }
 
 input#btnBack {
@@ -249,7 +290,7 @@ input#btnBack {
   width: 2.5rem;
   height: 2.4rem;
   top: 4rem;
-  right: 0.2rem;
+  right: 0.1rem;
   cursor: pointer; 
   border: none;
 }
@@ -260,10 +301,13 @@ input#btnBack {
   width: 2rem;
   height: 2.1rem;
   top: 4rem;
-  right: 0.6rem;
   cursor: pointer; 
   border: none;
 }
+/* i {
+  font-family: FontAwesome;
+  font-size: 100%;
+} */
 
 
 
