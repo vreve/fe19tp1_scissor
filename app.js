@@ -329,7 +329,7 @@ btnBack.addEventListener('click', function () {
   lastThree = document.querySelector("#darkmode").href.substr(document.querySelector("#darkmode").href.length - 3); // => "tml(ej aktivt" || "css(aktivt)"
   console.log(lastThree)
   // om dark mode icke är aktivt sätt det till aktivt annars sätt det till icke aktivt
-  if (lastThree == "tml") {
+  if (lastThree !== "css") {
     document.querySelector("#darkmode").href = "darkmode.css";
   } else {
     document.querySelector("#darkmode").href = "";
@@ -342,7 +342,7 @@ btnBack2.addEventListener('click', function () {
   lastThree = document.querySelector("#darkmode").href.substr(document.querySelector("#darkmode").href.length - 3); // => "tml(ej aktivt" || "css(aktivt)"
   console.log(lastThree)
   // om dark mode icke är aktivt sätt det till aktivt annars sätt det till icke aktivt
-  if (lastThree == "tml") {
+  if (lastThree !== "css") {
     document.querySelector("#darkmode").href = "darkmode.css";
   } else {
     document.querySelector("#darkmode").href = "";
