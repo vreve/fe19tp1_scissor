@@ -1,3 +1,50 @@
+/*FONTS*/
+.ql-font-arial {
+  font-family: 'sans-serif';
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='arial']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='arial']::before
+  {
+    content: 'sans-serif';
+    font-family: 'sans-serif';
+  }
+
+
+.ql-font-serif {
+  font-family: 'Serif', sans-serif;
+}
+
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='serif']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']::before
+{
+  content: 'Serif';
+  font-family: 'Serif';
+}
+
+.ql-font-impact {
+  font-family: 'Impact', sans-serif;
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='impact']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='impact']::before
+{
+  content: 'Impact';
+  font-family: 'Impact';
+}
+
+
+.ql-font-courier {
+  font-family: 'Courier', sans-serif;
+}
+.ql-snow .ql-picker.ql-font .ql-picker-label[data-value='courier']::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item[data-value='courier']::before
+{
+
+  content: 'Courier';
+  font-family: 'Courier';
+}
+
+
 /*POPUP*/
 .popUpHide{
   display: none;
@@ -35,6 +82,8 @@
   transition: 0.3s;
   align-self: flex-end;
 }
+
+/* BODY */
 
 body {
   display: flex;
@@ -122,6 +171,7 @@ html {
   border: border: 1px solid white;
 }
 
+
 html {
   font-size: 62.5%;
 }
@@ -150,6 +200,9 @@ form button {
   background-color: #e600e6;
 }
 
+#saveBtn, #formColor {
+margin-left: 1rem;
+}
 
 
 #notes {
@@ -215,23 +268,21 @@ form button {
   background-color: gold;
 }
 
+/* deleteknapp */
 .note span {
+  background-image:url(deleteBtn.svg); 
   position: absolute;
   width: 2rem;
-  height: 2rem;
-  top: 0.2rem;
-  right: 0.2rem;
-  border-radius: 0.4rem;
-  color: #999;
-  text-align: center;
+  height: 2.3rem;
+  top: 0.5rem;
+  right: 0.3rem;
 }
 
 .note span:hover {
-  color: #333;
-  background: #f5f5f5;
-  cursor: pointer;
-  border-radius: 3%;
+  background-image:url(deleteBtnActive.svg);
+  cursor: pointer; 
 }
+
 .showMe {
   display: none;
 
@@ -257,11 +308,26 @@ input#btnBack {
   color: white;
 }
 
-.favRed {
-  color:red;
+.favBtn {
+  background-image:url(favBorderBtn.svg);
+  position: absolute;
+  width: 2.5rem;
+  height: 2.4rem;
+  top: 4rem;
+  right: 0.1rem;
+  cursor: pointer; 
+  border: none;
 }
 
-
+.favRed {
+  background-image:url(heart2.png);
+  position: absolute;
+  width: 2rem;
+  height: 2.1rem;
+  top: 4rem;
+  cursor: pointer; 
+  border: none;
+}
 
 #mySidenav {
   display: none;

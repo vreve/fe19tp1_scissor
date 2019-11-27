@@ -26,18 +26,27 @@ function popUpLoad() {
 }
 
 var Delta = Quill.import('delta');
-var quill = new Quill('#editor-container', {
+var fonts = ['sans-serif', 'courier', 'impact', 'serif'];
+var Font = Quill.import('formats/font');
+Font.whitelist = ['sans-serif', 'courier', 'impact', 'serif'];
+Quill.register(Font, true);
+
+let quill = new Quill('#editor', {
   modules: {
     toolbar: [
-      [{ header: [1, 2, false] }],
+      [{ 'font': ['sans-serif', 'courier', 'impact', 'serif'] }],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
       ['bold', 'italic', 'underline'],
+      [{ 'align': [] }],
       [{ list: "ordered" }, { list: "bullet" }],
-      ['image', 'code-block']
+      ['image', 'code-block'],
+      ['clean'],
     ]
   },
   placeholder: 'Ny anteckning...',
   theme: 'snow'  // or 'bubble'
 });
+
 
 // Store accumulated changes
 var change = new Delta();
@@ -73,9 +82,10 @@ sidenav.newNote = document.querySelector('#sideNewNote');
 sidenav.favorite = document.querySelector('#sideBigFavBtn');
 
 const form = {}
-form.editnote = document.querySelector('#editor-container');
+form.editnote = document.querySelector('#editor');
 form.saveBtn = document.querySelector('#saveBtn');
 form.color = document.querySelector('#formColor');
+form.showAllNotes = document.querySelector('#showAllNotes');
 
 form.color.addEventListener('input', function (e) {
   console.log(e.target.value);
@@ -99,12 +109,20 @@ function addNote() {
     color: form.color.value
   }
 
+
   if (!noteList) {
     noteList = [];
   }
+
+  document.querySelector(".ql-editor").contentEditable = true
+
   noteList.unshift(note);
   saveNotes();
+  selectedNote = noteList.find(n => n.id === note.id)
+  console.log(selectedNote)
+  //selectedNote = noteList[0];
   quill.setText('');
+  //quill.focus();
 }
 
 function selectNote(noteID) {
@@ -112,7 +130,9 @@ function selectNote(noteID) {
 
   selectedNote = noteList.find(note => note.id === noteID)
   quill.setContents(selectedNote.content);
-
+  //quill.setText(selectedNote.title);
+  document.querySelector(".ql-editor").contentEditable = true;
+  quill.focus();
   form.color.value = selectedNote.color;
 }
 
@@ -121,7 +141,10 @@ function renderDiv(note) {
   let noteDivs = document.querySelector("#notes");
   let myDiv = document.createElement('div');
   let deleteButton = document.createElement('span');
-
+  /*   let newDeleteButton = document.createElement('i');
+    newDeleteButton.classList.add("fa");
+    newDeleteButton.classList.add("fa-trash");
+    newDeleteButton.classList.add('note-delete'); */
   let favBtn = document.createElement('button');
 
   myDiv.classList.add('note');
@@ -142,15 +165,15 @@ function renderDiv(note) {
 
 
   deleteButton.classList.add('note-delete');
-  deleteButton.innerHTML = '&times;';
+
 
   favBtn.classList.add('favBtn');
-  favBtn.innerHTML = 'Fav';
   if (note.favourite) {
     favBtn.classList.add("favRed");
+
   } else {
-    favBtn.innerHTML = 'Fav';
-  }
+    //favBtn.classList.add('favBtn');
+  };
 
   noteDivs.appendChild(myDiv);
   myDiv.appendChild(deleteButton);
@@ -199,10 +222,13 @@ function addListenerfavBtn(favBtn) {
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
-  console.log(selectedNote);
+  let noteToUpdate = noteList.find(note => note.id === selectedNote.id)
+  console.log(noteToUpdate);
 
-  selectedNote.content = quill.getContents();
-  selectedNote.title = quill.getText(0, 20);
+  noteToUpdate.content = quill.getContents();
+  noteToUpdate.title = quill.getText(0, 20);
+  console.log(noteToUpdate);
+  selectedNote = noteToUpdate
 
 
   saveNotes();
@@ -227,22 +253,22 @@ function renderNoteList() {
       renderDiv(note);
     })
   }
+  document.querySelector(".ql-editor").contentEditable = false;
 }
 
-
-
 // Event Listeners
-navbar.newNote.addEventListener('click', function (e) {
+document.querySelector('#newNote').addEventListener('click', function (e) {
   e.preventDefault();
   addNote();
   renderNoteList();
+  document.querySelector(".ql-editor").contentEditable = true;
+  quill.focus();
 })
 sidenav.newNote.addEventListener('click', function (e) {
   e.preventDefault();
   addNote();
   renderNoteList();
 })
-
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
@@ -297,23 +323,6 @@ function printout() {
   window.print();
 }
 
-
-
-
-
-
-
-// kod för att se om dark mode är aktivt:
-// var lastThree = document.querySelector("#darkmode").href.substr(document.querySelector("#darkmode").href.length - 3); // => "Tabs1"
-// lastThree == "tml" betyder ej aktivt, == "css" betyder aktivt
-// kod för at aktivera dark mode:
-// document.querySelector("#darkmode").href="darkmode.css"
-
-// deaktivera:
-// document.querySelector("#darkmode").href=""
-
-
-
 var btnBack = document.getElementById('btnBack');
 var lastThree;
 btnBack.addEventListener('click', function () {
@@ -327,9 +336,9 @@ btnBack.addEventListener('click', function () {
   }
 });
 
-var btnBack = document.getElementById('sideBtnBack');
-var lastThree;
-btnBack.addEventListener('click', function () {
+var btnBack2 = document.getElementById('sideBtnBack');
+//var lastThree;
+btnBack2.addEventListener('click', function () {
   lastThree = document.querySelector("#darkmode").href.substr(document.querySelector("#darkmode").href.length - 3); // => "tml(ej aktivt" || "css(aktivt)"
   console.log(lastThree)
   // om dark mode icke är aktivt sätt det till aktivt annars sätt det till icke aktivt
@@ -381,6 +390,10 @@ function closeNav() {
 
 
 
+document.querySelector('#showAllNotes').addEventListener('click', function (e) {
+  e.preventDefault();
+  renderNoteList();
+})
 
 
 
