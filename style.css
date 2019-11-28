@@ -270,16 +270,13 @@ margin-left: 1rem;
 
 /* deleteknapp */
 .note span {
-  background-image:url(deleteBtn.svg); 
   position: absolute;
-  width: 2rem;
   height: 2.3rem;
   top: 0.5rem;
-  right: 0.3rem;
+  right: 0.4rem;
 }
 
 .note span:hover {
-  background-image:url(deleteBtnActive.svg);
   cursor: pointer; 
 }
 
@@ -290,6 +287,7 @@ margin-left: 1rem;
 @media print {
   #test, #box, #popUp, .navbar {
     display: none;
+    
   }
   .showMe {
     display: block;
@@ -309,24 +307,16 @@ input#btnBack {
 }
 
 .favBtn {
-  background-image:url(favBorderBtn.svg);
+  color: #009879;
   position: absolute;
-  width: 2.5rem;
-  height: 2.4rem;
-  top: 4rem;
-  right: 0.1rem;
+  top: 5rem;
+  right: 0.4rem;
   cursor: pointer; 
   border: none;
 }
 
 .favRed {
-  background-image:url(heart2.png);
-  position: absolute;
-  width: 2rem;
-  height: 2.1rem;
-  top: 4rem;
-  cursor: pointer; 
-  border: none;
+  color: red;
 }
 
 #mySidenav {
