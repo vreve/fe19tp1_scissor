@@ -154,6 +154,7 @@ html {
   align-items: flex-start;
   border: none !important;
   background-color: white; 
+
 }
 
 
@@ -170,12 +171,15 @@ html {
   flex-wrap: wrap;
   height: 100vh;
   width: 100%;
-  border-right: none;
-  border-bottom: none;
   max-width: 1000px;
+  border: none;
 }
 
-
+.ql-container {
+  border-right: none !important;
+  border-bottom: none !important;
+  border: none;
+}
 
 #notes, #formColor {
   display: flex;
@@ -347,17 +351,28 @@ input#btnBack {
   filter: blur(3px);
 }
 
-@media screen and (max-width: 376px) {
+
+
+@media screen and (max-width: 780px) {
   body {
     flex-direction: column;
   }
 
   .ql-toolbar.ql-snow {
     border-top: initial;
+    flex-direction: row;
+  }
+
+  div.ql-editor {
+    height: 500px;
+  }
+
+  .ql-editor {
+    height: 420px !important;
   }
 
   #openBtn {
-  display: block;
+  display: none;
 }
 
   .navbar {
@@ -365,25 +380,38 @@ input#btnBack {
   }
 
   #mySidenav {
-    display: block;
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* height: 100px; */
   }
 
-#box {
-  align-self: center;
-}
+  #box {
+    align-self: center;
+    flex-direction: column;
+    order: 3;
+    width: 100%;
+    border-top: 1px solid black;
+    max-height: 0px;
+    /* transition: max-height 0.3s ease-out; */
+  }
 
   .sidenav {
-  height: 1000px;
+   
+  height: 60px;
   width: 0;
   position: fixed;
   z-index: 1;
-  top: 0;
+  bottom: 0;
   left: 0;
   background-color: #009879;
   overflow-x: hidden;
   transition: 0.5s;
-  padding-top: 60px;
+  justify-content: space-around;
+  /* padding-top: 60px; */
+}
+.expanded {
+  width: 100%;
 }
 
 .sidenav a {
@@ -408,11 +436,39 @@ input#btnBack {
   margin: 0;
   padding: 0rem;
   align-items: center;
-  
+  flex-direction: column;
+  order: 2;
+  width: 100%;
+
+}
+.boxExpanded {
+  /* transition: max-height 0.3s ease-in; */
+  max-height: 500px!important;
 }
 
+.note {
+  width: 90%;  
+  border-bottom: 1px solid;
+  box-shadow: none;
+}
 
+#formColor, #saveBtn {
+  display: block;
 
+}
+.note-delete, .favBtn {
+
+}
+
+.note span {
+  background-color: white;
+}
+
+.navBtn:hover {
+  color: rgb(255, 255, 255);
+  background: initial;
+}
+}
 
 
 
