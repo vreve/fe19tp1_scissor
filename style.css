@@ -167,18 +167,24 @@ html {
   color: rgb(0, 0, 0);
 }
 
-#editor-container, .ql-editor {
+#editor, .ql-editor {
   flex-wrap: wrap;
   height: 100vh;
   width: 100%;
   max-width: 1000px;
   border: none;
+  border-left: 1px solid lightgrey;
 }
 
-.ql-container {
+.ql-container { 
   border-right: none !important;
   border-bottom: none !important;
   border: none;
+}
+
+.ql-editor.ql-blank::before {
+  color: lightgrey;
+  font-size: 15px;
 }
 
 #notes, #formColor {
@@ -191,7 +197,7 @@ html {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   margin-left: 9px;
-  border: 1px solid white;
+  border: 1px solid black;
 }
 
 html {
@@ -323,9 +329,9 @@ input#btnBack {
 
 
 .ql-editor::before {
-
   color: white;
 }
+
 
 .favBtn {
   position: absolute;
@@ -455,11 +461,6 @@ input#btnBack {
 #formColor, #saveBtn {
   display: block;
 
-}
-.note-delete, .favBtn {
-
-}
-
 .note span {
   background-color: white;
 }
@@ -468,8 +469,6 @@ input#btnBack {
   color: rgb(255, 255, 255);
   background: initial;
 }
-}
-
 
 
 
