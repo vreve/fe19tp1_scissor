@@ -34,3 +34,7 @@ body {
 #openBtn {
   color: white;
 }
+
+#box {
+  border-top: 1px solid white;
+}

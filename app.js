@@ -86,6 +86,7 @@ form.editnote = document.querySelector('#editor');
 form.saveBtn = document.querySelector('#saveBtn');
 form.color = document.querySelector('#formColor');
 form.showAllNotes = document.querySelector('#showAllNotes');
+form.showAllNotes = document.querySelector('#sideShowAllNotes');
 
 form.color.addEventListener('input', function (e) {
   console.log(e.target.value);
@@ -353,11 +354,13 @@ btnBack2.addEventListener('click', function () {
 
 
 function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
+  //document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("mySidenav").classList.add("expanded")
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+  //document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("mySidenav").classList.remove("expanded")
 }
 
 
@@ -392,6 +395,12 @@ function closeNav() {
 
 document.querySelector('#showAllNotes').addEventListener('click', function (e) {
   e.preventDefault();
+  renderNoteList();
+})
+
+document.querySelector('#sideShowAllNotes').addEventListener('click', function (e) {
+  e.preventDefault();
+  document.querySelector("#box").classList.toggle("boxExpanded")
   renderNoteList();
 })
 
