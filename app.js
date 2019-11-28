@@ -13,11 +13,13 @@ function closePopUp() {
   let popup = document.querySelector("#popUp")
   popup.style.display = "none"
   localStorage.setItem('savePopUp', true);
+  document.body.classList.remove('blurMe');
 }
 
 function popUpLoad() {
   if (!localStorage.getItem('savePopUp')) {
     document.getElementById('popUp').classList.toggle('showPopUp');
+    document.body.classList.add('blurMe');
     //localStorage["alertdisplayed"] = true
     //localStorage.setItem('savePopUp', true);
   }
@@ -115,14 +117,16 @@ function addNote() {
     noteList = [];
   }
 
-  document.querySelector(".ql-editor").contentEditable = true
 
+  document.querySelector(".ql-editor").contentEditable = true
   noteList.unshift(note);
   saveNotes();
+
   selectedNote = noteList.find(n => n.id === note.id)
   console.log(selectedNote)
   //selectedNote = noteList[0];
   quill.setText('');
+  
   //quill.focus();
 }
 
@@ -146,7 +150,7 @@ function renderDiv(note) {
     newDeleteButton.classList.add("fa");
     newDeleteButton.classList.add("fa-trash");
     newDeleteButton.classList.add('note-delete'); */
-  let favBtn = document.createElement('button');
+  let favBtn = document.createElement('i');
 
   myDiv.classList.add('note');
   myDiv.classList.add(note.color);
@@ -162,18 +166,21 @@ function renderDiv(note) {
   myDiv.innerHTML = `${noteTitle} ${new Date(note.id).toLocaleDateString()} ${new Date(note.id).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
   myDiv.addEventListener("click", () => selectNote(note.id));
 
-
-
-
-  deleteButton.classList.add('note-delete');
-
+  deleteButton.classList.add('note-delete', 'far', 'fa-trash-alt');
 
   favBtn.classList.add('favBtn');
+  favBtn.classList.add('far');
+  favBtn.classList.add('fa-heart');
+ 
   if (note.favourite) {
-    favBtn.classList.add("favRed");
-
+    favBtn.classList.add('favRed');
+    favBtn.classList.remove('far');
+    favBtn.classList.add('fas');
+   
   } else {
-    //favBtn.classList.add('favBtn');
+/*     favBtn.classList.add('favBtn');
+    favBtn.classList.add('far');
+    favBtn.classList.add('fa-heart'); */
   };
 
   noteDivs.appendChild(myDiv);
@@ -212,8 +219,13 @@ function addListenerfavBtn(favBtn) {
     console.log(selectedNote)
     if (selectedNote.favourite) {
       e.target.classList.remove("favRed");
+      favBtn.classList.add('far');
+      favBtn.classList.remove('fas');
+
     } else {
       favBtn.classList.add("favRed");
+      favBtn.classList.remove('far');
+      favBtn.classList.add('fas');
     }
     selectedNote.favourite = !selectedNote.favourite;
     saveNotes()
