@@ -13,11 +13,13 @@ function closePopUp() {
   let popup = document.querySelector("#popUp")
   popup.style.display = "none"
   localStorage.setItem('savePopUp', true);
+  document.body.classList.remove('blurMe');
 }
 
 function popUpLoad() {
   if (!localStorage.getItem('savePopUp')) {
     document.getElementById('popUp').classList.toggle('showPopUp');
+    document.body.classList.add('blurMe');
     //localStorage["alertdisplayed"] = true
     //localStorage.setItem('savePopUp', true);
   }

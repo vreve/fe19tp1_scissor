@@ -1,6 +1,7 @@
 /*FONTS*/
 .ql-font-arial {
   font-family: 'sans-serif';
+
 }
 
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value='arial']::before,
@@ -42,8 +43,8 @@
 
   content: 'Courier';
   font-family: 'Courier';
+  
 }
-
 
 /*POPUP*/
 .popUpHide{
@@ -62,13 +63,18 @@
   z-index: 1000;
 }
 
+div {
+  font-size:medium;
+}
+
 #forBtn {
   padding: 20px;
-  background-color: lightgray;
+  background-color: rgb(223, 217, 217);
   color: black;
   width: 50%;
   display: flex;
   flex-direction: column;
+  
 }
   
 .closeBtn {
@@ -81,6 +87,7 @@
   cursor: pointer;
   transition: 0.3s;
   align-self: flex-end;
+  
 }
 
 /* BODY */
@@ -91,10 +98,12 @@ body {
   background-size: cover; 
   background-repeat: no-repeat;  
   background-attachment: fixed;
+
 }
 
 html {
   scroll-behavior: smooth;
+  
 }
 
 .navbar {
@@ -106,6 +115,7 @@ html {
     box-shadow: 0 0 10px 5px rgba(0, 0 ,0 ,0.25); 
     height: 100%;*/
     min-height: 100vh;
+
 }
 
 .navBtn {
@@ -169,8 +179,8 @@ html {
   color: rgb(0, 0, 0);
   margin-left: 9px;
   border: border: 1px solid white;
-}
 
+}
 
 html {
   font-size: 62.5%;
@@ -339,10 +349,9 @@ input#btnBack {
 
 
 
-
-
-
-
+.blurMe > *:not(#popUp){
+  filter: blur(3px);
+}
 
 
 
@@ -407,6 +416,7 @@ input#btnBack {
   margin: 0;
   padding: 0rem;
   align-items: center;
+  
 }
 
 
