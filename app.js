@@ -92,6 +92,7 @@ form.showAllNotes = document.querySelector('#sideShowAllNotes');
 
 form.color.addEventListener('input', function (e) {
   console.log(e.target.value);
+
 })
 
 const notes = document.querySelector('#notes');
@@ -126,7 +127,7 @@ function addNote() {
   console.log(selectedNote)
   //selectedNote = noteList[0];
   quill.setText('');
-  
+
   //quill.focus();
 }
 
@@ -171,16 +172,16 @@ function renderDiv(note) {
   favBtn.classList.add('favBtn');
   favBtn.classList.add('far');
   favBtn.classList.add('fa-heart');
- 
+
   if (note.favourite) {
     favBtn.classList.add('favRed');
     favBtn.classList.remove('far');
     favBtn.classList.add('fas');
-   
+
   } else {
-/*     favBtn.classList.add('favBtn');
-    favBtn.classList.add('far');
-    favBtn.classList.add('fa-heart'); */
+    /*     favBtn.classList.add('favBtn');
+        favBtn.classList.add('far');
+        favBtn.classList.add('fa-heart'); */
   };
 
   noteDivs.appendChild(myDiv);
@@ -237,12 +238,12 @@ document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
   let noteToUpdate = noteList.find(note => note.id === selectedNote.id)
   console.log(noteToUpdate);
-
+  /* noteToUpdate.color = form.color.value; */
   noteToUpdate.content = quill.getContents();
   noteToUpdate.title = quill.getText(0, 20);
   console.log(noteToUpdate);
   selectedNote = noteToUpdate
-
+  form.color.focus();
 
   saveNotes();
   document.querySelector("#notes").innerHTML = "";
