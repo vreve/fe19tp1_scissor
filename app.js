@@ -238,12 +238,12 @@ document.querySelector('#saveBtn').addEventListener('click', function (e) {
   e.preventDefault();
   let noteToUpdate = noteList.find(note => note.id === selectedNote.id)
   console.log(noteToUpdate);
-  /* noteToUpdate.color = form.color.value; */
+  noteToUpdate.color = form.color.value;
   noteToUpdate.content = quill.getContents();
   noteToUpdate.title = quill.getText(0, 20);
   console.log(noteToUpdate);
   selectedNote = noteToUpdate
-  form.color.focus();
+  /* form.color.focus(); */
 
   saveNotes();
   document.querySelector("#notes").innerHTML = "";

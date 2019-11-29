@@ -115,6 +115,11 @@ html {
   
 }
 
+img {
+  height: 70px;
+  width: 50px;
+}
+
 .navbar {
     display: flex;
     width: auto;
@@ -180,6 +185,7 @@ html {
   border-right: none !important;
   border-bottom: none !important;
   border: none;
+  height: 100vh !important;
 }
 
 .ql-editor.ql-blank::before {
