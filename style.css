@@ -402,6 +402,10 @@ input#btnBack {
     align-items: center;
     /* height: 100px; */
   }
+  #mySidenav a:hover {
+  color: rgb(255, 255, 255);
+  background: initial;
+}
 
   #box {
     align-self: center;
@@ -456,7 +460,7 @@ input#btnBack {
   flex-direction: column;
   order: 2;
   width: 100%;
-
+margin-bottom: 65px;
 }
 .boxExpanded {
   /* transition: max-height 0.3s ease-in; */

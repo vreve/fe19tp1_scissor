@@ -273,6 +273,7 @@ function renderNoteList() {
 // Event Listeners
 document.querySelector('#newNote').addEventListener('click', function (e) {
   e.preventDefault();
+  quill.setContents([{ insert: '\n' }]);
   addNote();
   renderNoteList();
   document.querySelector(".ql-editor").contentEditable = true;
@@ -282,6 +283,8 @@ sidenav.newNote.addEventListener('click', function (e) {
   e.preventDefault();
   addNote();
   renderNoteList();
+  document.querySelector(".ql-editor").contentEditable = true;
+  quill.focus();
 })
 
 document.querySelector('#saveBtn').addEventListener('click', function (e) {
