@@ -41,9 +41,16 @@ body {
 
 #editor, .ql-editor {
   border: none;
-  border-left: 1px solid
+  border-left: 1px solid;
 }
 
 .ql-editor.ql-blank::before {
   color: white !important;
+}
+
+@media screen and (max-width: 780px)  {
+
+  #editor, .ql-editor {
+    border-left: none;
+}
 }
