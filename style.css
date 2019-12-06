@@ -1,28 +1,35 @@
+/* HTML */
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+/* BODY */
+body {
+  display: flex;
+  margin: 0;
+  background-size: cover; 
+  background-repeat: no-repeat;  
+  background-attachment: fixed;
+}
 /*FONTS*/
 .ql-font-arial {
   font-family: 'sans-serif';
-
 }
-
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value='arial']::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value='arial']::before
   {
     content: 'sans-serif';
     font-family: 'sans-serif';
   }
-
-
 .ql-font-serif {
   font-family: 'Serif', sans-serif;
 }
-
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value='serif']::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value='serif']::before
 {
   content: 'Serif';
   font-family: 'Serif';
 }
-
 .ql-font-impact {
   font-family: 'Impact', sans-serif;
 }
@@ -32,27 +39,22 @@
   content: 'Impact';
   font-family: 'Impact';
 }
-
-
 .ql-font-courier {
   font-family: 'Courier', sans-serif;
 }
 .ql-snow .ql-picker.ql-font .ql-picker-label[data-value='courier']::before,
 .ql-snow .ql-picker.ql-font .ql-picker-item[data-value='courier']::before
 {
-
   content: 'Courier';
-  font-family: 'Courier';
-  
+  font-family: 'Courier'; 
 }
-
+/* ------------------ */
 /*POPUP*/
 .popUpHide{
   display: none;
   position: absolute;
   z-index: 1000;
 }
-
 .showPopUp{
   visibility: visible;
   display: flex;
@@ -61,30 +63,26 @@
   height: auto;
   width: 100%;
   z-index: 1000;
- 
 }
-
-  /* color: #333;
-  background: #f5f5f5; */
-
+/* ----------------------- */
 div {
   font-size: 25px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: justify;
 }
-
 #forBtn {
   padding: 20px;
   background-color: #009879;
-  color: #f5f5f5;
+  color: #F5F5F5;
   width: 50%;
   display: flex;
   flex-direction: column;
 }
-  
+ 
+/* CLOSE BUTTON */
 .closeBtn {
   margin-left: 15px;
-  color: #f5f5f5;;
+  color: #F5F5F5;;
   font-weight: bold;
   float: right;
   font-size: 22px;
@@ -93,62 +91,39 @@ div {
   transition: 0.3s;
   align-self: flex-end;
 }
-
 .closeBtn:hover {
   color: #333;
-
 }
-
-/* BODY */
-
-body {
-  display: flex;
-  margin: 0;
-  background-size: cover; 
-  background-repeat: no-repeat;  
-  background-attachment: fixed;
-
-}
-
-html {
-  scroll-behavior: smooth;
-  
-}
-
+/* QUIRE LOGO */
 img {
   height: 70px;
   width: 50px;
 }
-
+/* ---------- */
+/* NAVBAR */
 .navbar {
     display: flex;
     width: auto;
     flex-direction: column;
     background: #009879;
-    /*border-right: 2px solid #008C71;
-    box-shadow: 0 0 10px 5px rgba(0, 0 ,0 ,0.25); 
-    height: 100%;*/
     min-height: 100vh;
-
 }
-
 .navBtn {
     display: flex;
     justify-content: center;
-    /* background: #008C71; */
-    color: #ffffff;
+    color: #FFFFFF;
     padding: 12px;
     text-decoration: none;
     font-size: 1rem;
 }
-
 .navBtn:hover {
   color: #333;
-  background: #f5f5f5;
+  background: #F5F5F5;
   cursor: pointer;
   border-radius: 3%;
 }
-
+/* ------------------ */
+/* QUILL */
 .ql-toolbar.ql-snow {
   height: auto;
   width: 100%;
@@ -159,65 +134,53 @@ img {
   align-items: flex-start;
   border: none !important;
   background-color: white; 
-
 }
-
-
-
  .ql-snow .ql-stroke {
   stroke: black !important;
 }
-
 .ql-snow .ql-picker-label::before {
   color: rgb(0, 0, 0);
 }
-
 #editor, .ql-editor {
   flex-wrap: wrap;
-  /* height: 100vh; */
   width: 100%;
   max-width: 1000px;
   border: none;
   border-left: 1px solid lightgrey;
   height: 100%;
 }
-
 .ql-container { 
   border-right: none !important;
   border-bottom: none !important;
   border: none;
   height: 100vh !important;
 }
-
 .ql-editor.ql-blank::before {
   color: lightgrey;
   font-size: 15px;
 }
-
+.ql-editor::before {
+  color: white;
+}
+/* --------------------- */
+/* FORM, SAVE BUTTON OCH NOTES */
 #notes, #formColor {
   display: flex;
   width: 180px;
   margin-top: 15px;
 }
-
 #formColor {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 0, 0);
   margin-left: 9px;
   border: 1px solid black;
 }
-
-html {
-  font-size: 62.5%;
-}
-
 form select, 
 form button {
   display: inline-block;
   margin: 2rem 1rem 0 0;
   height: 2rem;
 }
-
 #saveBtn {
   width: 7rem;
   margin-left: 9px;
@@ -229,17 +192,13 @@ form button {
   transition: background-color .2s ease-in-out;
   -webkit-transition: background-color .2s ease-in-out;
 }
-
 #saveBtn:hover {
   cursor: pointer;
-  background-color: #e600e6;
+  background-color: #E600E6;
 }
-
 #saveBtn, #formColor {
 margin-left: 1rem;
 }
-
-
 #notes {
   display: flex;
   flex-wrap: wrap;
@@ -248,16 +207,15 @@ margin-left: 1rem;
   padding-right: 1rem;
   margin: 0;
 }
-
 #box {
     height: 850px;  
    overflow: scroll; 
 }
-
 ::-webkit-scrollbar {
     display: none;
 }
-
+/* --------------------------- */
+/* NOTE */
 .note {
   width: 24rem;
   height: 5rem;
@@ -272,13 +230,10 @@ margin-left: 1rem;
   color: black;
   border: 1px solid white;
 }
-
-
 .note-text {
   height: 100%;
   overflow-y: auto;
 }
-
 .note::after {
   content: '';
   position: absolute;
@@ -288,11 +243,9 @@ margin-left: 1rem;
   height: 0.8rem;
   border-radius: 0 0 0.4rem 0.4rem;
 }
-
 .note.red::after {
   background-color: lightcoral;
 }
-
 .note.blue::after {
   background-color: lightskyblue;
 }
@@ -302,7 +255,7 @@ margin-left: 1rem;
 .note.yellow::after {
   background-color: gold;
 }
-
+/* -------------------- */
 /* deleteknapp */
 .note span {
   position: absolute;
@@ -310,15 +263,14 @@ margin-left: 1rem;
   top: 0.5rem;
   right: 0.4rem;
 }
-
 .note span:hover {
   cursor: pointer; 
 }
-
+/* -------------- */
 .showMe {
   display: none;
-
 }
+/* PRINT */
 @media print {
   #test, #box, #popUp, .navbar {
     display: none;
@@ -327,24 +279,16 @@ margin-left: 1rem;
   .showMe {
     display: block;
   }
-
   @page {
     size: auto;
     margin: 10px 10px 0px 20px;
   }
 }
-
-
+/* ------------ */
 input#btnBack {
   max-width: 50%;
 }
-
-
-.ql-editor::before {
-  color: white;
-}
-
-
+/* FAVORITE BUTTON */
 .favBtn {
   position: absolute;
   top: 5rem;
@@ -352,67 +296,56 @@ input#btnBack {
   cursor: pointer; 
   border: none;
 }
-
 .favRed {
   color: red;
 }
-
+/* ------------- */
 #mySidenav {
   display: none;
 }
-
 #openBtn {
   display: none;
 }
-
+/* BLUR */
 .blurMe > *:not(#popUp){
   filter: blur(3px);
 }
-
-
-
+/* MOBILVY */
 @media screen and (max-width: 780px) {
+  
   body {
     flex-direction: column;
   }
-
   .ql-toolbar.ql-snow {
     border-top: initial;
     flex-direction: row;
   }
-
   div.ql-editor {
     height: 500px;
     font-size: 90%;
   }
-
   .ql-editor {
     height: 420px !important;
   }
-
   #editor, .ql-editor {
     border-left: none;
 }
-
   #openBtn {
   display: none;
 }
-
   .navbar {
     display: none;
   }
-
   #mySidenav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* height: 100px; */
+    
   }
   #mySidenav a:hover {
   color: rgb(255, 255, 255);
   background: initial;
 }
-
   #box {
     align-self: center;
     flex-direction: column;
@@ -420,11 +353,8 @@ input#btnBack {
     width: 100%;
     border-top: 1px solid black;
     max-height: 0px;
-    /* transition: max-height 0.3s ease-out; */
   }
-
   .sidenav {
-   
   height: 60px;
   width: 0;
   position: fixed;
@@ -435,21 +365,18 @@ input#btnBack {
   overflow-x: hidden;
   transition: 0.5s;
   justify-content: space-around;
-  /* padding-top: 60px; */
 }
 .expanded {
   width: 100%;
 }
-
 .sidenav a {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #ffffff;
+  color: #FFFFFF;
   display: block;
   transition: 0.3s;
 }
-
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -469,43 +396,17 @@ input#btnBack {
   margin-bottom: 65px;
 }
 .boxExpanded {
-  /* transition: max-height 0.3s ease-in; */
   max-height: 1000px!important;
 }
-
 .note {
   width: 90%;  
   border-bottom: 1px solid;
   box-shadow: none;
-  
 }
-
 #formColor, #saveBtn {
   display: block;
-
-.note span {
-  background-color: white;
 }
-
 .navBtn:hover {
   color: rgb(255, 255, 255);
   background: initial;
 }
-
-
-
-
-/* 
-#search {
-  background-position: 10px 12px; 
-  background-repeat: no-repeat; 
-  color: white;
-  background-color: black;
-  width: 75%;
-  font-size: 16px; 
-  padding: 12px 20px 12px 40px; 
-  border: 0.1px solid #009879;  
-  border-left: none; 
-  margin-bottom: 12px; 
-  margin-top: 30px;
-} */
