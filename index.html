@@ -6,7 +6,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta http-equiv='X-UA-Compatible' content='ie=edge'>
     <link rel='stylesheet' type='text/css' href='style.css'>
-    <link id="darkmode" rel='stylesheet' type='text/css' href=''>
+    <link id="darkmode" rel='stylesheet' type='text/css' href='tml'>
     <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
     <link href='https://cdn.quilljs.com/1.2.6/quill.snow.css' rel='stylesheet'>
     <script src='https://cdn.quilljs.com/1.2.6/quill.min.js'></script>
@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div id='popUp' id='alert' class='popUpHide'>
+    <div id='popUp' class='popUpHide'>
         <div id='forBtn'>
             <span class='closeBtn' onclick='closePopUp()'>&times;</span>
             <strong>Välkommen till Quire!</strong>
@@ -55,7 +55,7 @@
         <a href='#' class='navBtn' id='sideShowAllNotes'>
             <span class='material-icons'>subject</span>
         </a>
-        <a href='#' class='navBtn' id='printBtn'>
+        <a href='#' class='navBtn' id='sidePrintBtn'>
             <span class='material-icons' onclick="printout('editor-container')">print</span>
         </a>
         <a href='#' class='navBtn' id="sideBtnBack">
@@ -76,7 +76,7 @@
     <div id='test'>
         <div id='editor'></div>
     </div>
-    </div>
+    
     <script src='app.js'></script>
 </body>
 
