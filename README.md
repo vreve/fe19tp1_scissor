@@ -7,9 +7,11 @@ FE19 Team Project 1. https://trello.com/invite/b/HPp33G2c/bcbfcd19236cf7a392ecfd
 
 Contributors:
 Jens Bejerskog, Philip Löfgren, Andreas Frick Toresand, Isabelle Caspersson
+
 What is quire?
 Quire is a notebook-app that is implemented directly in the browser. This early version saves the notes locally without any backend. 
 Quire uses the open-source editor Quill to work properly. https://github.com/quilljs/quill
+
 Features:
 Delete notes
 Mark notes as "favorites"
@@ -20,6 +22,7 @@ Change font sizes and font styles
 Dark Mode
 Responsive on all platforms
 Coloring notes
+
 Upcoming Features:
 Search for notes
  
