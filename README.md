@@ -4,7 +4,7 @@ README!
 #fe19tp1_Scissors
 QUIRE
 FE19 Team Project 1. https://trello.com/invite/b/HPp33G2c/bcbfcd19236cf7a392ecfdcfabb85704/scrum-planning
-https://github.com/vreve/fe19tp1_scissor
+
 Contributors:
 Jens Bejerskog, Philip Löfgren, Andreas Frick Toresand, Isabelle Caspersson
 What is quire?
