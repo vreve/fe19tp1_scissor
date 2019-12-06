@@ -12,12 +12,10 @@
     <script src='https://cdn.quilljs.com/1.2.6/quill.min.js'></script>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/057f51869a.js" crossorigin="anonymous"></script>
-
     <title>Quire</title>
 </head>
 
 <body>
-
     <div id='popUp' id='alert' class='popUpHide'>
         <div id='forBtn'>
             <span class='closeBtn' onclick='closePopUp()'>&times;</span>
@@ -27,14 +25,9 @@
             Du kan även favoritmarkera anteckningar för att lättare hitta dem.
             Om du vill kan du även lägga till bilder och skriva ut dina anteckningar.
         </div>
-
-
     </div>
-
-
     <div class='navbar'>
         <img src="quire-logo.svg" alt="Quire logo">
-
         <a href='#' class='navBtn' id='newNote'>
             <span class='material-icons'>note_add</span>
         </a>
@@ -51,29 +44,11 @@
             <span class='material-icons'>brightness_2</span>
         </a>
     </div>
-
-
-
-    <!-- <div id="sideLayout">
-<span style="font-size:30px;cursor:pointer" id='openBtn' onclick="openNav()">&#9776; open</span>
-
-<div id='test'>
-    <div id='editor-container'></div>
-</div> 
-
-</div> -->
-
-
     <div id="mySidenav" class="sidenav expanded">
-
-        <!--   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> -->
-
         <a href='#' class='navBtn' id='sideNewNote'>
             <span class='material-icons'>note_add</span>
         </a>
-        <!-- <a href='#' class='navBtn'>
-            <span class='material-icons'>search</span>
-        </a> -->
+
         <a href='#' class='navBtn' id='sideBigFavBtn'>
             <span class='material-icons'>favorite</span>
         </a>
@@ -87,9 +62,6 @@
             <span class='material-icons'>brightness_2</span>
         </a>
     </div>
-
-    <span style="font-size:30px;cursor:pointer" id='openBtn' onclick="openNav()">&#9776; open</span>
-
     <div id='box'>
         <select name='formColor' id='formColor'>
             <option value='none'>Select color</option>
@@ -99,21 +71,12 @@
             <option value='yellow'>Yellow</option>
         </select>
         <button id='saveBtn'>Save</button>
-
-        <!-- <input type="text" id="search" onkeyup="searchFunc()" placeholder="Search for notes.."> -->
         <div id='notes'></div>
-
     </div>
-
     <div id='test'>
         <div id='editor'></div>
     </div>
     </div>
-
-
-
-
-
     <script src='app.js'></script>
 </body>
 
